@@ -29,15 +29,14 @@ const itemVariants = {
 export function ProjectsSection() {
   return (
     <section className="w-full h-full relative bg-white flex flex-col justify-center" id="projects">
-      <div className="mb-8">
-        <span className="font-mono text-xs text-gray-400 mb-2 block">
-          {' '}
+      <div className="mb-16 md:mb-20">
+        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // projects
         </span>
-        <h2 className="font-heading text-2xl font-semibold text-black mb-4">
+        <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
           Systems Built
         </h2>
-        <p className="font-body text-sm text-gray-500 italic max-w-2xl flex items-center gap-2">
+        <p className="font-body text-sm text-gray-500 italic max-w-2xl flex items-center gap-2 mt-2">
           <Lock size={14} className="inline" />
           Due to client confidentiality, projects are presented as abstracted
           case studies.
@@ -49,8 +48,8 @@ export function ProjectsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{
-          once: true,
-          margin: '-100px'
+          once: false,
+          margin: '-50px'
         }}
         className="flex flex-col gap-6">
 

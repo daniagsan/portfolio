@@ -1,15 +1,19 @@
+import { Suspense, lazy } from 'react';
 import { HeroSection } from './components/HeroSection';
-import { ProcessSection } from './components/ProcessSection';
-import { ServicesSection } from './components/ServicesSection';
-import { TechStackSection } from './components/TechStackSection';
-import { ExperienceSection } from './components/ExperienceSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { EducationSection } from './components/EducationSection';
-import { Footer } from './components/Footer';
+
+const ProcessSection = lazy(() => import('./components/ProcessSection').then(m => ({ default: m.ProcessSection })));
+const ServicesSection = lazy(() => import('./components/ServicesSection').then(m => ({ default: m.ServicesSection })));
+const TechStackSection = lazy(() => import('./components/TechStackSection').then(m => ({ default: m.TechStackSection })));
+const ExperienceSection = lazy(() => import('./components/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
+const ProjectsSection = lazy(() => import('./components/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
+const EducationSection = lazy(() => import('./components/EducationSection').then(m => ({ default: m.EducationSection })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="h-[100dvh] w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col justify-center overflow-hidden snap-start py-10">
-    {children}
+  <div className="h-[100dvh] w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col justify-center overflow-y-auto snap-start py-10">
+    <Suspense fallback={<div className="h-full w-full flex items-center justify-center font-mono text-sm text-gray-400 uppercase tracking-widest">// loading module</div>}>
+      {children}
+    </Suspense>
   </div>
 );
 

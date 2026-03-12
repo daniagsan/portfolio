@@ -84,8 +84,8 @@ export function TechStackSection() {
 
   return (
     <section className="w-full relative bg-white" id="stack" ref={containerRef}>
-      <div className="mb-8 pl-4">
-        <span className="font-mono text-sm text-black mb-2 block font-bold uppercase tracking-widest">
+      <div className="mb-16 md:mb-20 w-full">
+        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // Tools
         </span>
         <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
@@ -93,7 +93,7 @@ export function TechStackSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 relative w-full max-w-5xl mx-auto gap-12 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 relative w-full gap-12">
 
         <div className="flex flex-col gap-14 sm:gap-2 w-max px-4 relative z-10">
           {techStack.map((tech, index) => {
@@ -103,7 +103,7 @@ export function TechStackSection() {
                 className="w-max flex relative items-center gap-6"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-150px" }}
+                viewport={{ once: false, margin: "-50px" }}
               >
 
                 {/* The springing icon */}
@@ -125,7 +125,7 @@ export function TechStackSection() {
                   }}
                   className="w-16 h-16 bg-white border-2 border-black z-20 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center p-2"
                 >
-                  <img src={tech.icon as string} alt={tech.name} className="w-full h-full object-contain" />
+                  <img src={tech.icon as string} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </motion.div>
 
                 {/* The sliding out title */}
@@ -162,7 +162,7 @@ export function TechStackSection() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-50px" }}
             transition={{ delay: 1.0, duration: 0.8, ease: "easeOut" }}
             className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
@@ -175,14 +175,14 @@ export function TechStackSection() {
 
             {/* JS Icon appended to the bottom right boundary of the box */}
             <div className="absolute -bottom-6 -right-4 w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-20">
-              <img src={jsIcon} alt="JavaScript" className="w-full h-full object-contain" />
+              <img src={jsIcon} alt="JavaScript" className="w-full h-full object-contain" loading="lazy" decoding="async" />
             </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-50px" }}
             transition={{ delay: 1.3, duration: 0.8, ease: "easeOut" }}
             className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
@@ -196,10 +196,10 @@ export function TechStackSection() {
             {/* Back End additional tools placed at the bottom bounds */}
             <div className="absolute -bottom-6 -right-2 flex gap-2 z-20">
               <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <img src={playwrightIcon} alt="Playwright" className="w-full h-full object-contain" />
+                <img src={playwrightIcon} alt="Playwright" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
               <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <img src={redisIcon} alt="Redis" className="w-full h-full object-contain" />
+                <img src={redisIcon} alt="Redis" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
               <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <span className="font-heading font-black text-xs">CEL</span>

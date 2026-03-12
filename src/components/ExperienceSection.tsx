@@ -15,11 +15,11 @@ const containerVariants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    x: -20
+    y: 20
   },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       duration: 0.5
     }
@@ -28,12 +28,11 @@ const itemVariants = {
 export function ExperienceSection() {
   return (
     <section className="w-full h-full relative bg-white flex flex-col justify-center" id="experience">
-      <div className="mb-12">
-        <span className="font-mono text-xs text-gray-400 mb-2 block">
-          {' '}
+      <div className="mb-16 md:mb-20">
+        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // experience
         </span>
-        <h2 className="font-heading text-2xl font-semibold text-black">
+        <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
           Professional Experience
         </h2>
       </div>
@@ -43,8 +42,8 @@ export function ExperienceSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{
-          once: true,
-          margin: '-100px'
+          once: false,
+          margin: '-50px'
         }}
         className="flex flex-col">
 

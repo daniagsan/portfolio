@@ -133,8 +133,8 @@ export const projectsData: ReadonlyArray<ProjectItem> = [
 ];
 
 export const techStack: ReadonlyArray<TechStackItem> = [
-    { name: 'TypeScript', id: 'typescript', icon: tsIcon },
     { name: 'React', id: 'react', icon: reactIcon },
+    { name: 'TypeScript', id: 'typescript', icon: tsIcon },
     { name: 'Python', id: 'python', icon: pythonIcon },
     { name: 'Django', id: 'django', icon: djangoIcon },
     { name: 'Java', id: 'java', icon: javaIcon },

@@ -21,8 +21,8 @@ export function ProcessSection() {
   return (
     <section className="w-full h-full relative bg-white flex flex-col justify-center" id="process">
 
-      <div className="mb-16 pt-8">
-        <span className="font-mono text-sm text-black mb-2 block font-bold uppercase tracking-widest">
+      <div className="mb-16 md:mb-20 w-full">
+        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // Process
         </span>
         <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
@@ -34,8 +34,8 @@ export function ProcessSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
-        className="w-full flex flex-row items-end h-[400px] md:h-[500px] mt-24 border-b-4 border-l-4 border-black pr-4 pb-0"
+        viewport={{ once: false, margin: '-50px' }}
+        className="w-full flex flex-row items-end h-[400px] md:h-[500px] border-b-4 border-l-4 border-black"
       >
         {processSteps.map((step, index) => (
           <motion.div

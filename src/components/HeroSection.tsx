@@ -1,6 +1,77 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { UserIcon, MailIcon } from 'lucide-react';
+
+// Subcomponents
+function HeroProfile() {
+  return (
+    <div className="flex flex-col items-center md:items-start shrink-0 relative z-20">
+      <div className="relative w-40 h-40 md:w-56 md:h-56 border-2 border-black bg-white flex items-center justify-center p-2">
+        <div className="absolute top-2 left-2 text-[10px] text-gray-400 font-mono font-bold uppercase">
+          profile pic
+        </div>
+        <UserIcon size={80} className="text-black stroke-[1.5]" />
+        <a
+          href="mailto:hello@example.com"
+          className="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center z-30 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          aria-label="Send email"
+        >
+          <MailIcon size={20} strokeWidth={1.5} />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function HeroContent() {
+  return (
+    <>
+      <div className="w-full border-b-2 border-black pb-2 mb-6 relative">
+        <h1 className="font-heading font-bold text-5xl md:text-7xl text-black tracking-tighter uppercase mt-0">
+          Daniel Aguilera
+        </h1>
+      </div>
+
+      <div className="w-full pb-4 mb-6">
+        <h2 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
+          (Role) Product Engineer and
+        </h2>
+        <h3 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
+          Software Solutions Architect
+        </h3>
+        <div className="w-full border-b-2 border-black mt-4"></div>
+      </div>
+
+      <div className="w-full border-2 border-black p-6 mb-10 bg-white">
+        <h4 className="font-heading font-bold text-black uppercase text-xl md:text-2xl border-b-2 border-black pb-2 mb-4 inline-block">
+          What do I do? Section
+        </h4>
+        <p className="font-body text-base md:text-lg text-black leading-relaxed font-medium">
+          I design and build custom software systems, automation platforms,
+          and AI-powered solutions to solve complex operational challenges cleanly and efficiently.
+        </p>
+      </div>
+    </>
+  );
+}
+
+function HeroActions() {
+  return (
+    <div className="flex flex-col sm:flex-row gap-4 w-full">
+      <a
+        href="#projects"
+        className="px-8 py-4 text-sm font-bold border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 text-center uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1"
+      >
+        What I Build
+      </a>
+      <a
+        href="mailto:hello@example.com"
+        className="px-8 py-4 text-sm font-bold border-2 border-black bg-black text-white hover:bg-white hover:text-black transition-colors duration-200 text-center uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1"
+      >
+        Contact
+      </a>
+    </div>
+  );
+}
 
 export function HeroSection() {
   return (
@@ -9,73 +80,19 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="w-full flex flex-col md:flex-row gap-12 md:gap-16 justify-start items-start md:px-12 relative z-10"
+        className="w-full flex flex-col md:flex-row gap-12 md:gap-16 justify-start items-start relative z-10"
       >
-        {/* Profile Picture Column */}
-        <div className="flex flex-col items-center md:items-start shrink-0 relative z-20">
-          <div className="relative w-40 h-40 md:w-56 md:h-56 border-2 border-black bg-white flex items-center justify-center p-2">
-            <div className="absolute top-2 left-2 text-[10px] text-gray-400 font-mono font-bold uppercase">profile pic</div>
-            <UserIcon size={80} className="text-black stroke-[1.5]" />
-            <a
-              href="mailto:hello@example.com"
-              className="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center z-30 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-              aria-label="Send email"
-            >
-              <MailIcon size={20} strokeWidth={1.5} />
-            </a>
-          </div>
-        </div>
+        <HeroProfile />
 
-        {/* Text Content Column */}
         <div className="flex-1 flex flex-col items-start w-full relative">
-          {/* Top text area with Name */}
-          <div className="w-full border-b-2 border-black pb-2 mb-6 relative">
-            <h1 className="font-heading font-bold text-5xl md:text-7xl text-black tracking-tighter uppercase mt-0">
-              Daniel Aguilera
-            </h1>
-          </div>
-
-          <div className="w-full pb-4 mb-6">
-            <h2 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
-              (Role) Product Engineer and
-            </h2>
-            <h3 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
-              Software Solutions Architect
-            </h3>
-            <div className="w-full border-b-2 border-black mt-4"></div>
-          </div>
-
-          <div className="w-full border-2 border-black p-6 mb-10 bg-white">
-            <h4 className="font-heading font-bold text-black uppercase text-xl md:text-2xl border-b-2 border-black pb-2 mb-4 inline-block">
-              What do I do? Section
-            </h4>
-            <p className="font-body text-base md:text-lg text-black leading-relaxed font-medium">
-              I design and build custom software systems, automation platforms,
-              and AI-powered solutions to solve complex operational challenges cleanly and efficiently.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 w-full">
-            <a
-              href="#projects"
-              className="px-8 py-4 text-sm font-bold border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 text-center uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1"
-            >
-              What I Build
-            </a>
-            <a
-              href="mailto:hello@example.com"
-              className="px-8 py-4 text-sm font-bold border-2 border-black bg-black text-white hover:bg-white hover:text-black transition-colors duration-200 text-center uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1"
-            >
-              Contact
-            </a>
-          </div>
-
+          <HeroContent />
+          <HeroActions />
         </div>
       </motion.div>
 
       {/* Decorative vertical lines */}
-      <div className="absolute left-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10"></div>
-      <div className="absolute right-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10"></div>
+      <div className="absolute left-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10" aria-hidden="true"></div>
+      <div className="absolute right-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10" aria-hidden="true"></div>
     </section>
   );
 }
