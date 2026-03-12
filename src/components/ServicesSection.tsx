@@ -91,22 +91,22 @@ export function ServicesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: '-50px' }}
-        className="flex w-full justify-around items-center"
+        className="flex w-full justify-center"
       >
         {/* Element 1: Arriba */}
         <div className="">
-          <ServiceCard service={servicesData[0]} className="md:-translate-y-8" />
+          <ServiceCard service={servicesData[0]} className="md:translate-y-8" />
         </div>
         {/* Element 2: Abajo */}
-        <div className="">
-          <ServiceCard service={servicesData[1]} className="md:translate-y-8" />
+        <div className="md:translate-y-44">
+          <ServiceCard service={servicesData[1]} className="md:translate-y-10" />
         </div>
         {/* Element 3: Arriba */}
         <div className="">
           <ServiceCard service={servicesData[2]} className="md:-translate-y-8" />
         </div>
         {/* Element 4: Abajo */}
-        <div className="">
+        <div className="md:translate-y-44">
           <ServiceCard service={servicesData[3]} className="md:translate-y-8" />
         </div>
       </motion.div>

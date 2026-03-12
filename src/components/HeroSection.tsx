@@ -27,7 +27,7 @@ function HeroContent() {
     <>
       <div className="w-full border-b-2 border-black pb-2 mb-6 relative">
         <h1 className="font-heading font-bold text-5xl md:text-7xl text-black tracking-tighter uppercase mt-0">
-          Daniel Aguilera
+          Name name
         </h1>
       </div>
 
