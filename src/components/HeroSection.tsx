@@ -90,7 +90,7 @@ function HeroActions() {
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col items-start relative w-full bg-white">
+    <section className="flex flex-col items-start relative w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -105,9 +105,7 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Decorative vertical lines */}
-      <div className="absolute left-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10" aria-hidden="true"></div>
-      <div className="absolute right-4 top-0 bottom-0 w-px bg-black md:block hidden opacity-10" aria-hidden="true"></div>
+
     </section>
   );
 }

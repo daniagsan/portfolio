@@ -57,14 +57,14 @@ const ServiceCard = ({ service, className }: { service: ServiceItem; className?:
 
 export function ServicesSection() {
   return (
-    <section className="w-full h-full relative bg-white" id="services">
+    <section className="w-full h-full relative" id="services">
       <SectionHeader label="Services" title="What Do You Need?" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-50px' }}
+        viewport={{ once: false, margin: '-10%' }}
         className="flex w-full justify-center mt-[12%]"
       >
         <div>

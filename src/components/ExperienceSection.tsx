@@ -5,14 +5,14 @@ import { experienceData } from '../data/mockData';
 
 export function ExperienceSection() {
   return (
-    <section className="w-full h-full relative bg-white" id="experience">
+    <section className="w-full h-full relative" id="experience">
       <SectionHeader label="experience" title="Professional Experience" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-50px' }}
+        viewport={{ once: false, margin: '-10%' }}
         className="flex flex-col"
       >
         {experienceData.map((exp, index) => (

@@ -5,7 +5,7 @@ import { educationData } from '../data/mockData';
 
 export function EducationSection() {
   return (
-    <section className="w-full h-full relative bg-white" id="education">
+    <section className="w-full h-full relative" id="education">
       <SectionHeader label="education" title="Education" />
 
       <motion.div
@@ -13,7 +13,7 @@ export function EducationSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, margin: '-10%' }}
       >
         {educationData.map((item, index) => (
           <motion.div

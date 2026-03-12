@@ -74,7 +74,7 @@ export function TechStackSection() {
   };
 
   return (
-    <section className="w-full relative bg-white flex flex-col" id="stack" ref={containerRef}>
+    <section className="w-full relative flex flex-col" id="stack" ref={containerRef}>
       <SectionHeader label="Tools" title="My Tools (Tech Stack)" className="mb-16 w-full flex-shrink-0" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 relative w-full gap-12">
@@ -86,7 +86,7 @@ export function TechStackSection() {
               className="w-max flex relative items-center gap-6"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-50px' }}
+              viewport={{ once: false, margin: '-10%' }}
             >
               <motion.div
                 variants={{
@@ -126,7 +126,7 @@ export function TechStackSection() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-50px' }}
+            viewport={{ once: false, margin: '-10%' }}
             transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
             className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
@@ -147,7 +147,7 @@ export function TechStackSection() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-50px' }}
+            viewport={{ once: false, margin: '-10%' }}
             transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
             className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >

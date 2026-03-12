@@ -5,14 +5,14 @@ import { processSteps } from '../data/mockData';
 
 export function ProcessSection() {
   return (
-    <section className="w-full h-full relative bg-white" id="process">
+    <section className="w-full h-full relative" id="process">
       <SectionHeader label="Process" title="System Thinking" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-50px' }}
+        viewport={{ once: false, margin: '-10%' }}
         className="w-full flex flex-row items-end h-[400px] md:h-[500px] border-b-4 border-l-4 border-black"
       >
         {processSteps.map((step, index) => (
@@ -25,8 +25,7 @@ export function ProcessSection() {
               className="w-full bg-white border-x-2 border-t-4 border-black flex flex-col items-center justify-start text-black text-center relative transition-colors shadow-none"
               style={{
                 height: `${(index + 1) * 20}%`,
-                borderLeftWidth: index === 0 ? '0px' : '2px',
-                borderRightWidth: index === processSteps.length - 1 ? '0px' : '2px'
+                borderLeftWidth: index === 0 ? '0px' : '2px'
               }}
             >
               <div className="absolute -top-[52px] md:-top-[64px] left-[50%] transform -translate-x-[50%] bg-white border-2 border-black p-2 md:p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-12 h-12 md:w-16 md:h-16 flex items-center justify-center group-hover:-translate-y-2 transition-transform duration-300">

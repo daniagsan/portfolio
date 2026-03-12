@@ -6,7 +6,7 @@ import { projectsData } from '../data/mockData';
 
 export function ProjectsSection() {
   return (
-    <section className="w-full h-full relative bg-white flex flex-col" id="projects">
+    <section className="w-full h-full relative flex flex-col" id="projects">
       <SectionHeader label="projects" title="Systems Built" className="mb-16 w-full flex-shrink-0">
         <p className="font-mono text-xs text-black flex items-center gap-2 uppercase tracking-wide font-bold">
           <Lock size={14} className="inline shrink-0" />
@@ -18,7 +18,7 @@ export function ProjectsSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, margin: '-10%' }}
         className="flex-1 flex flex-col gap-4  min-h-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {projectsData.map((project, index) => (
