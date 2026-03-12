@@ -26,16 +26,16 @@ function HeroContent() {
   return (
     <>
       <div className="w-full border-b-2 border-black pb-2 mb-6 relative">
-        <h1 className="font-heading font-bold text-5xl md:text-7xl text-black tracking-tighter uppercase mt-0">
+        <h1 className="font-heading font-bold text-5xl text-black tracking-tighter uppercase mt-0">
           Name name
         </h1>
       </div>
 
       <div className="w-full pb-4 mb-6">
-        <h2 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
+        <h2 className="font-heading text-xl text-black font-bold uppercase tracking-wide">
           (Role) Product Engineer and
         </h2>
-        <h3 className="font-heading text-xl md:text-3xl text-black font-bold uppercase tracking-wide">
+        <h3 className="font-heading text-xl text-black font-bold uppercase tracking-wide">
           Software Solutions Architect
         </h3>
         <div className="w-full border-b-2 border-black mt-4"></div>

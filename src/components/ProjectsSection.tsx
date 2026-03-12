@@ -26,7 +26,7 @@ export function ProjectsSection() {
         <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // projects
         </span>
-        <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
+        <h2 className="font-heading text-3xl font-bold text-black uppercase tracking-tight">
           Systems Built
         </h2>
         <p className="font-mono text-xs text-black flex items-center gap-2 uppercase tracking-wide font-bold">

@@ -1,11 +1,25 @@
+@import "tailwindcss";
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@theme {
+  /* Font families (migrated from tailwind.config.js) */
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  /* Gray palette (migrated from tailwind.config.js — neutral values override defaults) */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -29,7 +43,7 @@
     --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
     --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
     --space-xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-    --space-2xl: clamp(3rem, 2rem + 5vw, 5rem);
+    --space-2xl: clamp(3rem, 2em + 5vw, 5rem);
   }
 
   body {
@@ -52,24 +66,24 @@
   }
 }
 
-@layer utilities {
-  .custom-scrollbar::-webkit-scrollbar {
+@utility custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+
+  &::-webkit-scrollbar {
     width: 4px;
   }
-  .custom-scrollbar::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: transparent;
-    border-left: 1px solid rgba(0,0,0,0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
   }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: black;
     border-radius: 0;
   }
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: black transparent;
-  }
-  .dot-grid {
-    background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
+  background-size: 24px 24px;
 }

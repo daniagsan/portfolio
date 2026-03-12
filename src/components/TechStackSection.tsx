@@ -88,7 +88,7 @@ export function TechStackSection() {
         <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // Tools
         </span>
-        <h2 className="font-heading text-3xl md:text-5xl font-bold text-black uppercase tracking-tight">
+        <h2 className="font-heading text-3xl font-bold text-black uppercase tracking-tight">
           My Tools (Tech Stack)
         </h2>
       </div>
