@@ -83,8 +83,8 @@ export function TechStackSection() {
   };
 
   return (
-    <section className="w-full relative bg-white" id="stack" ref={containerRef}>
-      <div className="mb-16 md:mb-20 w-full">
+    <section className="w-full relative bg-white flex flex-col" id="stack" ref={containerRef}>
+      <div className="mb-16 w-full flex-shrink-0">
         <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // Tools
         </span>
@@ -123,7 +123,7 @@ export function TechStackSection() {
                       }
                     }
                   }}
-                  className="w-16 h-16 bg-white border-2 border-black z-20 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center p-2"
+                  className="flex-1 w-16 h-16 bg-white border-2 border-black z-20 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center p-2 min-h-0"
                 >
                   <img src={tech.icon as string} alt={tech.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </motion.div>
@@ -183,7 +183,7 @@ export function TechStackSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-50px" }}
-            transition={{ delay: 1.3, duration: 0.8, ease: "easeOut" }}
+            transition={{ delay: 1.0, duration: 0.8, ease: "easeOut" }}
             className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
@@ -209,28 +209,30 @@ export function TechStackSection() {
         </div>
       </div>
 
-      {/* Floating Bots */}
-      <FloatingBot
-        name="Gemini"
-        initialX={20}
-        initialY={500}
-        containerRef={containerRef}
-        onCollide={handleCollide}
-      />
-      <FloatingBot
-        name="Claude"
-        initialX={250}
-        initialY={600}
-        containerRef={containerRef}
-        onCollide={handleCollide}
-      />
+      {/* Floating Bots — clipped to section bounds without affecting grid content */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="pointer-events-auto">
+          <FloatingBot
+            name="Gemini"
+            initialX={20}
+            initialY={500}
+            containerRef={containerRef}
+            onCollide={handleCollide}
+          />
+          <FloatingBot
+            name="Claude"
+            initialX={250}
+            initialY={600}
+            containerRef={containerRef}
+            onCollide={handleCollide}
+          />
+        </div>
 
-
-
-      {/* Burst Particles */}
-      {particles.map(p => (
-        <ParticleBurst key={p.id} x={p.x} y={p.y} onComplete={() => removeParticle(p.id)} />
-      ))}
+        {/* Burst Particles */}
+        {particles.map(p => (
+          <ParticleBurst key={p.id} x={p.x} y={p.y} onComplete={() => removeParticle(p.id)} />
+        ))}
+      </div>
     </section>
   );
 }

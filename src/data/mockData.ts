@@ -129,6 +129,14 @@ export const projectsData: ReadonlyArray<ProjectItem> = [
     {
         title: 'Operational Backend Architecture',
         description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
+    },
+    {
+        title: 'Operational Backend Architecture',
+        description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
+    },
+    {
+        title: 'Operational Backend Architecture',
+        description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
     }
 ];
 

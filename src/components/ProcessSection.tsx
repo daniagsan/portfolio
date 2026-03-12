@@ -19,7 +19,7 @@ const itemVariants = {
 
 export function ProcessSection() {
   return (
-    <section className="w-full h-full relative bg-white flex flex-col justify-center" id="process">
+    <section className="w-full h-full relative bg-white" id="process">
 
       <div className="mb-16 md:mb-20 w-full">
         <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">

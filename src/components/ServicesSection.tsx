@@ -76,8 +76,8 @@ const ServiceCard = ({ service, className }: { service: any; className?: string 
 
 export function ServicesSection() {
   return (
-    <section className="w-full relative bg-white flex flex-col" id="services">
-      <div className="mb-16 md:mb-20 flex-shrink-0 w-full">
+    <section className="w-full h-full relative bg-white" id="services">
+      <div className="mb-16 md:mb-20 w-full">
         <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
           // Services
         </span>
@@ -91,7 +91,7 @@ export function ServicesSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: '-50px' }}
-        className="flex w-full justify-center"
+        className="flex w-full justify-center mt-[12%]"
       >
         {/* Element 1: Arriba */}
         <div className="">
