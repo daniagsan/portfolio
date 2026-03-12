@@ -1,26 +1,24 @@
 import { motion } from 'framer-motion';
+import { containerVariants, itemVariants } from '../animations';
+import { SectionHeader } from './SectionHeader';
 import { educationData } from '../data/mockData';
 
 export function EducationSection() {
   return (
     <section className="w-full h-full relative bg-white" id="education">
-      <div className="mb-16 md:mb-20 w-full">
-        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
-          // education
-        </span>
-        <h2 className="font-heading text-3xl font-bold text-black uppercase tracking-tight">
-          Education
-        </h2>
-      </div>
+      <SectionHeader label="education" title="Education" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-50px' }}
+      >
         {educationData.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-50px' }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            variants={itemVariants}
             className="flex flex-col border-2 border-black p-6 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
           >
             <h3 className="font-heading font-bold text-base text-black mb-1 uppercase tracking-tight">
@@ -34,7 +32,7 @@ export function EducationSection() {
             </p>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

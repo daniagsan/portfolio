@@ -1,46 +1,25 @@
 import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
+import { containerVariants, itemVariants } from '../animations';
+import { SectionHeader } from './SectionHeader';
 import { projectsData } from '../data/mockData';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' }
-  }
-};
 
 export function ProjectsSection() {
   return (
     <section className="w-full h-full relative bg-white flex flex-col" id="projects">
-      <div className="mb-16 md:mb-20 w-full flex-shrink-0">
-        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
-          // projects
-        </span>
-        <h2 className="font-heading text-3xl font-bold text-black uppercase tracking-tight">
-          Systems Built
-        </h2>
+      <SectionHeader label="projects" title="Systems Built" className="mb-16 w-full flex-shrink-0">
         <p className="font-mono text-xs text-black flex items-center gap-2 uppercase tracking-wide font-bold">
           <Lock size={14} className="inline shrink-0" />
           Client confidentiality — presented as abstracted case studies.
         </p>
-      </div>
+      </SectionHeader>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-50px' }}
-        className="flex-1 flex flex-col gap-4 overflow-y-auto custom-scrollbar min-h-0"
+        viewport={{ once: true, margin: '-50px' }}
+        className="flex-1 flex flex-col gap-4  min-h-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {projectsData.map((project, index) => (
           <motion.div

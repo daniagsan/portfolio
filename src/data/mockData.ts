@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Brain, Settings, HardHat, Bot, Umbrella, Code, Cog, BrainCircuit, Smartphone } from 'lucide-react';
+import { Brain, Settings, HardHat, Bot, Umbrella, Code, Cog, BrainCircuit, Smartphone, TreePalm } from 'lucide-react';
 
 import reactIcon from '../assets/tech/react-svgrepo-com.svg';
 import javaIcon from '../assets/tech/java-svgrepo-com.svg';
@@ -91,7 +91,7 @@ export const processSteps: ReadonlyArray<ProcessStep> = [
     { id: '02', title: 'Design the system', icon: Settings },
     { id: '03', title: 'Build the software', icon: HardHat },
     { id: '04', title: 'Automate & scale', icon: Bot },
-    { id: '05', title: 'Enjoy the results', icon: Umbrella }
+    { id: '05', title: 'Enjoy the results', icon: TreePalm }
 ];
 
 export const servicesData: ReadonlyArray<ServiceItem> = [
@@ -125,14 +125,6 @@ export const projectsData: ReadonlyArray<ProjectItem> = [
     {
         title: 'AI-Powered Internal Assistant',
         description: 'Intelligent assistant leveraging LLM APIs to provide contextual support for internal operations and decision-making.'
-    },
-    {
-        title: 'Operational Backend Architecture',
-        description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
-    },
-    {
-        title: 'Operational Backend Architecture',
-        description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
     },
     {
         title: 'Operational Backend Architecture',

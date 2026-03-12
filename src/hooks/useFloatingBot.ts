@@ -16,8 +16,13 @@ export function useFloatingBot({
     onCollide
 }: UseFloatingBotProps) {
     const [pos, setPos] = useState({ x: initialX, y: initialY });
+    const posRef = useRef({ x: initialX, y: initialY });
     const velocity = useRef({ x: Math.random() > 0.5 ? 2 : -2, y: Math.random() > 0.5 ? 2 : -2 });
     const reqRef = useRef<number>();
+    const onCollideRef = useRef(onCollide);
+
+    // Keep the callback ref current without restarting the animation loop
+    useEffect(() => { onCollideRef.current = onCollide; });
 
     useEffect(() => {
         if (isHovered) return;
@@ -29,8 +34,8 @@ export function useFloatingBot({
             const botW = 120;
             const botH = 40;
 
-            let nextX = pos.x + velocity.current.x;
-            let nextY = pos.y + velocity.current.y;
+            let nextX = posRef.current.x + velocity.current.x;
+            let nextY = posRef.current.y + velocity.current.y;
 
             let collided = false;
             let colX = nextX;
@@ -61,9 +66,10 @@ export function useFloatingBot({
             }
 
             if (collided) {
-                onCollide(colX, colY);
+                onCollideRef.current(colX, colY);
             }
 
+            posRef.current = { x: nextX, y: nextY };
             setPos({ x: nextX, y: nextY });
             reqRef.current = requestAnimationFrame(update);
         };
@@ -72,7 +78,7 @@ export function useFloatingBot({
         return () => {
             if (reqRef.current) cancelAnimationFrame(reqRef.current);
         };
-    }, [pos, isHovered, containerRef, onCollide]);
+    }, [isHovered, containerRef]);
 
     return pos;
 }

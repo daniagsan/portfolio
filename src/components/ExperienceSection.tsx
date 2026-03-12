@@ -1,34 +1,12 @@
 import { motion } from 'framer-motion';
+import { containerVariants, itemVariants } from '../animations';
+import { SectionHeader } from './SectionHeader';
 import { experienceData } from '../data/mockData';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' }
-  }
-};
 
 export function ExperienceSection() {
   return (
     <section className="w-full h-full relative bg-white" id="experience">
-      <div className="mb-16 md:mb-20 w-full">
-        <span className="font-mono text-sm text-black mb-4 block font-bold uppercase tracking-widest">
-          // experience
-        </span>
-        <h2 className="font-heading text-3xl font-bold text-black uppercase tracking-tight">
-          Professional Experience
-        </h2>
-      </div>
+      <SectionHeader label="experience" title="Professional Experience" />
 
       <motion.div
         variants={containerVariants}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { UserIcon, MailIcon } from 'lucide-react';
+import { UserIcon, MailIcon, Github, Linkedin } from 'lucide-react';
 
 // Subcomponents
 function HeroProfile() {
@@ -10,12 +10,29 @@ function HeroProfile() {
           profile pic
         </div>
         <UserIcon size={80} className="text-black stroke-[1.5]" />
+      </div>
+
+      <div className="flex gap-2 mt-4">
         <a
           href="mailto:hello@example.com"
-          className="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center z-30 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="w-10 h-10 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
           aria-label="Send email"
         >
-          <MailIcon size={20} strokeWidth={1.5} />
+          <MailIcon size={16} strokeWidth={1.5} />
+        </a>
+        <a
+          href="#"
+          className="w-10 h-10 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+          aria-label="GitHub"
+        >
+          <Github size={16} strokeWidth={1.5} />
+        </a>
+        <a
+          href="#"
+          className="w-10 h-10 border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors duration-200 flex items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+          aria-label="LinkedIn"
+        >
+          <Linkedin size={16} strokeWidth={1.5} />
         </a>
       </div>
     </div>
@@ -26,7 +43,7 @@ function HeroContent() {
   return (
     <>
       <div className="w-full border-b-2 border-black pb-2 mb-6 relative">
-        <h1 className="font-heading font-bold text-5xl text-black tracking-tighter uppercase mt-0">
+        <h1 className="font-heading font-bold text-4xl text-black tracking-tighter uppercase">
           Name name
         </h1>
       </div>
@@ -37,9 +54,7 @@ function HeroContent() {
         </h2>
         <h3 className="font-heading text-xl text-black font-bold uppercase tracking-wide">
           Software Solutions Architect
-        </h3>
-        <div className="w-full border-b-2 border-black mt-4"></div>
-      </div>
+        </h3>      </div>
 
       <div className="w-full border-2 border-black p-6 mb-10 bg-white">
         <h4 className="font-heading font-bold text-black uppercase text-xl md:text-2xl border-b-2 border-black pb-2 mb-4 inline-block">
