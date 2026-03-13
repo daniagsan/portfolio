@@ -80,10 +80,10 @@ export const experienceData: ReadonlyArray<ExperienceItem> = [
         impact: 'Supervised staff and executed system testing/QA protocols for electronic voting systems, ensuring data integrity during critical election periods.'
     },
     {
-        role: 'Translator Assistant (OPEP)',
+        role: 'Personal Interpreter Spanish to English (OPEP)',
         organization: 'UABCS',
         timeframe: 'Aug 2023 – Nov 2023',
-        impact: 'Facilitated cross-cultural communication and translated educational materials for the Overseas Practical Education Program.'
+        impact: 'Facilitated cross-cultural japanese/english/spanish communication and translated educational materials for the Overseas Practical Education Program students.'
     },
     {
         role: 'Website Administrator & Copywriter',
