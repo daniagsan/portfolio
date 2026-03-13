@@ -5,7 +5,7 @@ import { educationData } from '../data/mockData';
 
 export function EducationSection() {
   return (
-    <section className="w-full h-full relative" id="education">
+    <section className="w-full h-full relative flex flex-col justify-center align-center" id="education">
       <SectionHeader label="education" title="Education" />
 
       <motion.div

@@ -10,7 +10,7 @@ const EducationSection = lazy(() => import('./components/EducationSection').then
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="h-[100dvh] w-full snap-start flex-shrink-0 flex flex-col overflow-y-hidden">
-    <div className="w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col h-full py-10">
+    <div className="w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col justify-center h-full py-10">
       <Suspense fallback={<div className="h-full w-full flex items-center justify-center font-mono text-sm text-gray-400 uppercase tracking-widest">// loading module</div>}>
         {children}
       </Suspense>

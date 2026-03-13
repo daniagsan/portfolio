@@ -5,7 +5,7 @@ import { processSteps } from '../data/mockData';
 
 export function ProcessSection() {
   return (
-    <section className="w-full h-full relative" id="process">
+    <section className="w-full relative flex flex-col" id="process">
       <SectionHeader label="Process" title="System Thinking" />
 
       <motion.div

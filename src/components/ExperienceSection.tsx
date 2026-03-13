@@ -5,7 +5,7 @@ import { experienceData } from '../data/mockData';
 
 export function ExperienceSection() {
   return (
-    <section className="w-full h-full relative" id="experience">
+    <section className="w-full h-full relative flex flex-col justify-center" id="experience">
       <SectionHeader label="experience" title="Professional Experience" />
 
       <motion.div

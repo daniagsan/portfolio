@@ -57,27 +57,27 @@ const ServiceCard = ({ service, className }: { service: ServiceItem; className?:
 
 export function ServicesSection() {
   return (
-    <section className="w-full h-full relative" id="services">
+    <section className="w-full relative flex flex-col mb-[30%]" id="services">
       <SectionHeader label="Services" title="What Do You Need?" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-10%' }}
+        viewport={{ once: false, margin: '-50%' }}
         className="flex w-full justify-center mt-[12%]"
       >
         <div>
-          <ServiceCard service={servicesData[0]} className="md:translate-y-8" />
+          <ServiceCard service={servicesData[0]} className="" />
         </div>
         <div className="md:translate-y-44">
-          <ServiceCard service={servicesData[1]} className="md:translate-y-10" />
+          <ServiceCard service={servicesData[1]} className="" />
         </div>
         <div>
-          <ServiceCard service={servicesData[2]} className="md:-translate-y-8" />
+          <ServiceCard service={servicesData[2]} className="" />
         </div>
         <div className="md:translate-y-44">
-          <ServiceCard service={servicesData[3]} className="md:translate-y-8" />
+          <ServiceCard service={servicesData[3]} className="" />
         </div>
       </motion.div>
     </section>

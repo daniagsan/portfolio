@@ -54,26 +54,26 @@ export interface TechStackItem {
 // Data Exports
 export const educationData: ReadonlyArray<EducationItem> = [
     {
-        degree: 'Bachelor of Science in Computer Science',
+        degree: 'Bachelor’s Degree in Software Development Engineering',
         description: 'Focus on software engineering, algorithms, and system design.',
-        institution: 'University of Technology'
+        institution: 'Universidad Autónoma de Baja California Sur'
     },
     {
-        degree: 'Certifications & Continuous Learning',
+        degree: 'Bachelor’s in Communications Science',
         description: 'Cloud architecture, AI/ML specializations, and modern development practices.',
-        institution: 'Various Platforms'
+        institution: 'Universidad Autónoma de Baja California Sur'
     }
 ];
 
 export const experienceData: ReadonlyArray<ExperienceItem> = [
     {
-        role: 'Senior Product Engineer',
-        organization: 'TechCorp',
-        timeframe: '2022–Present',
+        role: 'Full Stack Java-Web Developer',
+        organization: 'Goverment of La Paz, Baja California Sur',
+        timeframe: '2025–Present',
         impact: 'Led development of automation platform serving 50K+ users, reducing manual processing time by 85% across core business units.'
     },
     {
-        role: 'Software Architect',
+        role: 'Data Entry Supervisor',
         organization: 'DataFlow Inc',
         timeframe: '2020–2022',
         impact: 'Designed microservices architecture reducing system latency by 40% and enabling seamless scaling during peak operational hours.'
