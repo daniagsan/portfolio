@@ -9,6 +9,11 @@ import { SectionHeader } from './SectionHeader';
 import jsIcon from '../assets/tech/js-svgrepo-com.svg';
 import playwrightIcon from '../assets/tech/playwright.svg';
 import redisIcon from '../assets/tech/redis-svgrepo-com.svg';
+import figmaIcon from '../assets/tech/figma-svgrepo-com.svg';
+import psIcon from '../assets/tech/photoshop-svgrepo-com.svg';
+import aiIcon from '../assets/tech/brand-adobe-illustrator-svgrepo-com.svg';
+import claudeIcon from '../assets/tech/claude.svg';
+import geminiIcon from '../assets/tech/gemini.svg';
 
 const ParticleBurst = ({ x, y, onComplete }: { x: number; y: number; onComplete: () => void }) => (
   <div className="absolute pointer-events-none" style={{ left: x, top: y, zIndex: 100 }}>
@@ -36,13 +41,14 @@ const ParticleBurst = ({ x, y, onComplete }: { x: number; y: number; onComplete:
 
 interface FloatingBotProps {
   name: string;
+  icon: string;
   initialX: number;
   initialY: number;
   containerRef: RefObject<HTMLDivElement>;
   onCollide: (x: number, y: number) => void;
 }
 
-const FloatingBot = ({ name, initialX, initialY, containerRef, onCollide }: Readonly<FloatingBotProps>) => {
+const FloatingBot = ({ name, icon, initialX, initialY, containerRef, onCollide }: Readonly<FloatingBotProps>) => {
   const [isHovered, setIsHovered] = useState(false);
   const pos = useFloatingBot({ initialX, initialY, containerRef, isHovered, onCollide });
 
@@ -53,7 +59,7 @@ const FloatingBot = ({ name, initialX, initialY, containerRef, onCollide }: Read
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-4 h-4 rounded-full bg-black animate-pulse" />
+      <img src={icon} alt={name} className="w-5 h-5 animate-pulse object-contain" />
       <span className="text-sm">{name}</span>
     </div>
   );
@@ -122,14 +128,14 @@ export function TechStackSection() {
           ))}
         </div>
 
-        <div className="flex flex-col justify-around h-full">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-10%' }}
-            transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
-            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
-          >
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, margin: '-10%' }}
+          transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
+          className="flex flex-col h-full gap-6"
+        >
+          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Front End
             </span>
@@ -142,15 +148,9 @@ export function TechStackSection() {
               </div>
 
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-10%' }}
-            transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
-            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
-          >
+          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Back End
             </span>
@@ -165,28 +165,34 @@ export function TechStackSection() {
                 <img src={redisIcon} alt="Redis" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-10%' }}
-            transition={{ delay: 1.2, duration: 0.8, ease: 'easeOut' }}
-            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
-          >
+          </div>
+
+          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Design & UX
             </span>
-            <p className="font-body text-xs leading-relaxed text-black">
+            <p className="font-body text-xs leading-relaxed text-black mb-6">
               I'll rescue your product's visual identity. Using <span className="font-bold">Figma, Illustrator, and Photoshop</span>, I translate complex technical requirements into high-converting, intuitive interfaces that resonate with your users.
             </p>
-          </motion.div>
-        </div>
+            <div className="absolute -bottom-6 -right-2 flex gap-2 z-20">
+              <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <img src={figmaIcon} alt="Figma" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <img src={aiIcon} alt="Illustrator" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+              <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <img src={psIcon} alt="Photoshop" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="pointer-events-auto">
-          <FloatingBot name="Gemini" initialX={20} initialY={500} containerRef={containerRef} onCollide={handleCollide} />
-          <FloatingBot name="Claude" initialX={250} initialY={600} containerRef={containerRef} onCollide={handleCollide} />
+          <FloatingBot name="Gemini" icon={geminiIcon} initialX={20} initialY={500} containerRef={containerRef} onCollide={handleCollide} />
+          <FloatingBot name="Claude" icon={claudeIcon} initialX={250} initialY={600} containerRef={containerRef} onCollide={handleCollide} />
         </div>
         {particles.map(p => (
           <ParticleBurst key={p.id} x={p.x} y={p.y} onComplete={() => removeParticle(p.id)} />

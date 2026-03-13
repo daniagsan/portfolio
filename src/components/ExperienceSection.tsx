@@ -6,7 +6,7 @@ import { experienceData } from '../data/mockData';
 export function ExperienceSection() {
   return (
     <section className="w-full h-full relative flex flex-col justify-center" id="experience">
-      <SectionHeader label="experience" title="Professional Experience" />
+      <SectionHeader label="experience" title="Professional Experience" className="mb-3 w-full flex-shrink-0" />
 
       <motion.div
         variants={containerVariants}
@@ -19,7 +19,7 @@ export function ExperienceSection() {
           <motion.div
             key={index}
             variants={itemVariants}
-            className="py-8 border-b-2 border-black last:border-0 group"
+            className="py-3 border-b-2 border-black last:border-0 group"
           >
             <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-3 gap-2 md:gap-4">
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-3">

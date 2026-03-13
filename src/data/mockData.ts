@@ -56,34 +56,40 @@ export interface TechStackItem {
 export const educationData: ReadonlyArray<EducationItem> = [
     {
         degree: 'Bachelor’s Degree in Software Development Engineering',
-        description: 'Focus on software engineering, algorithms, and system design.',
+        description: 'Focus on Object-Oriented Programming, Web Development, Databases, Data Analysis, and Project Management.',
         institution: 'Universidad Autónoma de Baja California Sur'
     },
     {
-        degree: 'Bachelor’s in Communications Science',
-        description: 'Cloud architecture, AI/ML specializations, and modern development practices.',
+        degree: 'Bachelor of Communication Science',
+        description: 'Specialization in IT Administration & UI/UX. Focus on digital communication strategies, attractive interface design, and User Experience (UX).',
         institution: 'Universidad Autónoma de Baja California Sur'
     }
 ];
 
 export const experienceData: ReadonlyArray<ExperienceItem> = [
     {
-        role: 'Full Stack Java-Web Developer',
-        organization: 'Goverment of La Paz, Baja California Sur',
-        timeframe: '2025–Present',
-        impact: 'Led development of automation platform serving 50K+ users, reducing manual processing time by 85% across core business units.'
+        role: 'Full Stack Web Developer (JSP-Servlet)',
+        organization: 'General Directorate of IT (B.C.S. Government)',
+        timeframe: 'Feb 2025 – Present',
+        impact: 'Designed and developed web interfaces bridging front-end and back-end for government systems. Managed data integration using Java Servlets and PostgreSQL, implementing dynamic filters and interactive maps.'
     },
     {
-        role: 'Data Entry Supervisor',
-        organization: 'DataFlow Inc',
-        timeframe: '2020–2022',
-        impact: 'Designed microservices architecture reducing system latency by 40% and enabling seamless scaling during peak operational hours.'
+        role: 'Human Resource & Data Entry Supervisor',
+        organization: 'Electoral State Institute (IEE)',
+        timeframe: 'May 2024 – Jun 2024',
+        impact: 'Supervised staff and executed system testing/QA protocols for electronic voting systems, ensuring data integrity during critical election periods.'
     },
     {
-        role: 'Full Stack Developer',
-        organization: 'StartupXYZ',
-        timeframe: '2018–2020',
-        impact: 'Built core product from MVP to production serving enterprise clients, establishing foundational CI/CD pipelines and testing protocols.'
+        role: 'Translator Assistant (OPEP)',
+        organization: 'UABCS',
+        timeframe: 'Aug 2023 – Nov 2023',
+        impact: 'Facilitated cross-cultural communication and translated educational materials for the Overseas Practical Education Program.'
+    },
+    {
+        role: 'Website Administrator & Copywriter',
+        organization: 'TV Baja / State Congress of B.C.S.',
+        timeframe: 'Oct 2021 – Aug 2022',
+        impact: 'Managed digital content, government institutional reporting, and web administration for legislative news and transparency.'
     }
 ];
 
