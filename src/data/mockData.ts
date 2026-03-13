@@ -26,6 +26,7 @@ export interface ExperienceItem {
 export interface ProcessStep {
     id: string;
     title: string;
+    description: string;
     icon: React.ElementType;
 }
 
@@ -87,32 +88,57 @@ export const experienceData: ReadonlyArray<ExperienceItem> = [
 ];
 
 export const processSteps: ReadonlyArray<ProcessStep> = [
-    { id: '01', title: 'Understand the problem', icon: Brain },
-    { id: '02', title: 'Design the system', icon: Settings },
-    { id: '03', title: 'Build the software', icon: HardHat },
-    { id: '04', title: 'Automate & scale', icon: Bot },
-    { id: '05', title: 'Enjoy the results', icon: TreePalm }
+    {
+        id: '01',
+        title: 'Semantic Discovery',
+        description: 'Analyzing data flows and user requirements to extract structured meaning.',
+        icon: Brain
+    },
+    {
+        id: '02',
+        title: 'Hardened Design',
+        description: 'Architecting secure, containerized microservices with robust concurrency guards.',
+        icon: Settings
+    },
+    {
+        id: '03',
+        title: 'Full-Stack Bridge',
+        description: 'Building intuitive UIs backed by high-performance asynchronous logic.',
+        icon: Code
+    },
+    {
+        id: '04',
+        title: 'AI Orchestration',
+        description: 'Scaling intelligence by integrating LLMs into automated background workflows.',
+        icon: BrainCircuit
+    },
+    {
+        id: '05',
+        title: 'Reliable Delivery',
+        description: 'Ensuring operational integrity through atomic transactions and high availability.',
+        icon: TreePalm
+    }
 ];
 
 export const servicesData: ReadonlyArray<ServiceItem> = [
     {
-        title: 'Custom Software Development',
-        description: 'Tailored solutions designed for your specific business logic and workflows.',
+        title: 'High-Concurrency Backends',
+        description: 'I\'ll transform your scaling bottlenecks into a high-availability fortress.',
         icon: Code
     },
     {
         title: 'Automation Systems',
-        description: 'Streamline operations with intelligent automation that scales with your growth.',
+        description: 'I\'ll turn your repetitive manual chaos into a self-running, high-efficiency automated machine.',
         icon: Cog
     },
     {
-        title: 'AI Integration',
-        description: 'Embed AI capabilities into your existing systems for smarter decision-making.',
+        title: 'Intelligent Data Pipelines',
+        description: 'I can take your messy data and make it useful.',
         icon: BrainCircuit
     },
     {
-        title: 'Web & Mobile Applications',
-        description: 'Cross-platform applications built with modern frameworks and best practices.',
+        title: 'Strategic Product UX',
+        description: 'I\'ll rescue your confusing user journeys and evolve them into seamless, high-converting experiences.',
         icon: Smartphone
     }
 ];

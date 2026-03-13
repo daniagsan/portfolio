@@ -77,9 +77,9 @@ export function TechStackSection() {
     <section className="w-full relative flex flex-col" id="stack" ref={containerRef}>
       <SectionHeader label="Tools" title="My Tools (Tech Stack)" className="mb-16 w-full flex-shrink-0" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 relative w-full gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] relative w-full gap-12">
 
-        <div className="flex flex-col gap-14 sm:gap-2 w-max px-4 relative z-10">
+        <div className="flex flex-col gap-14 sm:gap-2 w-max relative z-10">
           {techStack.map((tech, index) => (
             <motion.div
               key={tech.id}
@@ -122,18 +122,18 @@ export function TechStackSection() {
           ))}
         </div>
 
-        <div className="flex flex-col justify-around h-full gap-12">
+        <div className="flex flex-col justify-around h-full">
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: '-10%' }}
             transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
-            className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Front End
             </span>
-            <p className="font-body text-xs leading-relaxed text-black mb-6">
+            <p className="font-body text-xs leading-relaxed text-black">
               I utilize React and modern frameworks for component-driven scalability and maintainability, but I also possess the fluency to build highly optimized layouts natively using raw <span className="font-bold">HTML, CSS, y JS</span>. Playwright enables robust E2E testing and scraping to ensure quality.
             </p>
             <div className="absolute -bottom-6 -right-2 flex gap-2 z-20">
@@ -149,12 +149,12 @@ export function TechStackSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: '-10%' }}
             transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
-            className="w-full p-6 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
           >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Back End
             </span>
-            <p className="font-body text-xs leading-relaxed text-black mb-6">
+            <p className="font-body text-xs leading-relaxed text-black">
               Python and Django form the core of my robust backend logic, supplemented by tools like <span className="font-bold">Celery y Redis</span> for distributed task queueing and caching. Java ensures enterprise readiness while Docker containers manage microservice isolation.
             </p>
             <div className="absolute -bottom-6 -right-2 flex gap-2 z-20">
@@ -165,6 +165,20 @@ export function TechStackSection() {
                 <img src={redisIcon} alt="Redis" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-10%' }}
+            transition={{ delay: 1.2, duration: 0.8, ease: 'easeOut' }}
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+          >
+            <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
+              // Design & UX
+            </span>
+            <p className="font-body text-xs leading-relaxed text-black">
+              I'll rescue your product's visual identity. Using <span className="font-bold">Figma, Illustrator, and Photoshop</span>, I translate complex technical requirements into high-converting, intuitive interfaces that resonate with your users.
+            </p>
           </motion.div>
         </div>
       </div>

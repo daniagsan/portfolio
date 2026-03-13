@@ -17,7 +17,7 @@ const itemVariants: Variants = {
 const cardAnimations = {
   container: "transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:rotate-0 group-hover:scale-[1.6] sm:group-hover:scale-125 group-hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] group-hover:-translate-y-4",
   innerContainer: "group-hover:rotate-0 transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]",
-  iconWrapper: "transform transition-all duration-500 ease-out group-hover:-translate-y-5 sm:group-hover:-translate-y-8",
+  iconWrapper: "transform transition-all duration-500 ease-out group-hover:-translate-y-5",
   hoverTextWrapper: "opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 ease-out pointer-events-none group-hover:pointer-events-auto"
 };
 
