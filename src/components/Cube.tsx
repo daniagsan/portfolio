@@ -16,8 +16,8 @@ const getActiveFace = (rotX: number, rotY: number) => {
         { id: 1, z: -Math.cos(radX) * Math.cos(radY) },          // Back
         { id: 2, z: -Math.cos(radX) * Math.sin(radY) },          // Right
         { id: 3, z: Math.cos(radX) * Math.sin(radY) },           // Left
-        { id: 4, z: Math.sin(radX) },                            // Top
-        { id: 5, z: -Math.sin(radX) },                           // Bottom
+        { id: 4, z: -Math.sin(radX) },                           // Top
+        { id: 5, z: Math.sin(radX) },                            // Bottom
     ];
 
     return faces.reduce((prev, curr) => (curr.z > prev.z ? curr : prev)).id;
@@ -100,10 +100,13 @@ export default function Cube({ onPinChange }: { onPinChange?: (pinned: boolean, 
 
     const onPointerDown = useCallback((e: React.PointerEvent) => {
         if (isPinned) {
+            stateRef.current.isDragging = false;
+            setIsDragging(false);
             setIsPinned(false);
             return;
         }
 
+        e.preventDefault();
         const s = stateRef.current;
         s.isDragging = true;
         s.lastPointerX = e.clientX;
@@ -112,7 +115,7 @@ export default function Cube({ onPinChange }: { onPinChange?: (pinned: boolean, 
         s.velX = 0;
         s.velY = 0;
         setIsDragging(true);
-        (e.target as HTMLElement).setPointerCapture(e.pointerId);
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
 
         // Start charging immediately since velocity is 0
         setIsCharging(true);
@@ -154,6 +157,8 @@ export default function Cube({ onPinChange }: { onPinChange?: (pinned: boolean, 
                 // Restart timer if we just started charging again
                 if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
                 holdTimerRef.current = setTimeout(() => {
+                    const currentActive = getActiveFace(stateRef.current.rotX, stateRef.current.rotY);
+                    setActiveIndex(currentActive);
                     setIsPinned(true);
                     setIsCharging(false);
                 }, 4000);
@@ -182,7 +187,7 @@ export default function Cube({ onPinChange }: { onPinChange?: (pinned: boolean, 
 
     return (
         <div
-            className={`select-none transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${isPinned ? 'absolute top-1/2 left-0 -translate-y-1/2 scale-50 opacity-60' : 'relative'
+            className={`select-none transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${isPinned ? 'absolute top-1/2 left-0 -translate-y-1/2 scale-50' : 'relative'
                 }`}
             style={{
                 perspective: 800,
