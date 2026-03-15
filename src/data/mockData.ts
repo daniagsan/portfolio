@@ -39,6 +39,10 @@ export interface ServiceItem {
 export interface ProjectItem {
     title: string;
     description: string;
+    icon: React.ElementType;
+    platform: string;
+    type: string;
+    techStack: string[];
 }
 
 export interface TechCategory {
@@ -74,7 +78,7 @@ export const experienceData: ReadonlyArray<ExperienceItem> = [
         impact: 'Designed and developed web interfaces bridging front-end and back-end for government systems. Managed data integration using Java Servlets and PostgreSQL, implementing dynamic filters and interactive maps.'
     },
     {
-        role: 'Human Resource & Data Entry Supervisor',
+        role: 'Data Entry Supervisor',
         organization: 'Electoral State Institute (IEE)',
         timeframe: 'May 2024 – Jun 2024',
         impact: 'Supervised staff and executed system testing/QA protocols for electronic voting systems, ensuring data integrity during critical election periods.'
@@ -151,16 +155,52 @@ export const servicesData: ReadonlyArray<ServiceItem> = [
 
 export const projectsData: ReadonlyArray<ProjectItem> = [
     {
-        title: 'Institutional Workflow Automation',
-        description: 'End-to-end automation platform that digitized and streamlined complex institutional processes, reducing manual work by 70%.'
+        title: 'CRM Mobile Core',
+        description: 'High-performance mobile application for real estate professionals, featuring real-time inventory management and reactive UI.',
+        icon: Smartphone,
+        platform: 'iOS / Android (Expo)',
+        type: 'Mobile CRM - Enterprise-grade property management and client relationship tool with offline-first capabilities.',
+        techStack: ['React Native', 'Expo', 'TypeScript', 'React Navigation v7']
     },
     {
-        title: 'AI-Powered Internal Assistant',
-        description: 'Intelligent assistant leveraging LLM APIs to provide contextual support for internal operations and decision-making.'
+        title: 'AI Semantic Matcher',
+        description: 'Intelligent module leveraging Generative AI to analyze client requirements and suggest optimal property pairings.',
+        icon: Bot,
+        platform: 'Cloud / Mobile API',
+        type: 'AI Integration - Semantic analysis of unstructured data for automated lead-property scoring.',
+        techStack: ['Gemini 1.5 Flash', 'Python', 'LangChain', 'REST API']
     },
     {
-        title: 'Operational Backend Architecture',
-        description: 'Scalable backend system designed to handle high-throughput operational data with real-time processing capabilities.'
+        title: 'Dynamic Filter Engine',
+        description: 'Sophisticated search system with multi-parameter dynamic filters and optimized UX for large-scale databases.',
+        icon: Settings,
+        platform: 'Cross-platform Mobile',
+        type: 'UX Optimization - High-speed data retrieval and advanced filtering algorithms for complex queries.',
+        techStack: ['TypeScript', 'PostgreSQL', 'Search Logic', 'Redux']
+    },
+    {
+        title: 'Real-time Data Pipeline',
+        description: 'Asynchronous synchronization system ensuring mobile clients receive instant inventory and status updates.',
+        icon: Cog,
+        platform: 'Distributed Systems',
+        type: 'Data Pipeline - Distributed microservices handling real-time event processing and webhooks.',
+        techStack: ['Redis', 'Celery', 'Node.js', 'Docker']
+    },
+    {
+        title: 'Operational Monitor',
+        description: 'Real-time technical monitoring interface designed to manage complex backend processes directly from mobile devices.',
+        icon: BrainCircuit,
+        platform: 'iOS / Android',
+        type: 'Monitoring Tool - High-availability dashboard for real-time process tracking and management.',
+        techStack: ['React Native', 'Django REST', 'Redis', 'Webhooks']
+    },
+    {
+        title: 'Hardened Infrastructure',
+        description: 'Secure, containerized backend architecture designed to support high-concurrency mobile transactions.',
+        icon: HardHat,
+        platform: 'Cloud / Docker',
+        type: 'Infrastructure - Scalable microservices with concurrency guards and atomic transaction integrity.',
+        techStack: ['Django', 'Docker Compose', 'PostgreSQL', 'Redis']
     }
 ];
 
