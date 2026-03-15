@@ -5,7 +5,7 @@ import { containerVariants, itemVariants } from '../animations';
 import { SectionHeader } from './SectionHeader';
 import { projectsData } from '../data/mockData';
 import Loader from './Cube';
-import Switch from './Switch'
+import Switch from './Switch';
 
 export function ProjectsSection() {
   const [isPinned, setIsPinned] = useState(false);

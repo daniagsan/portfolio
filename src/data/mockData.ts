@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Brain, Settings, HardHat, Bot, Umbrella, Code, Cog, BrainCircuit, Smartphone, TreePalm } from 'lucide-react';
+import { Brain, Settings, HardHat, Bot, Code, Cog, BrainCircuit, Smartphone, TreePalm } from 'lucide-react';
 
 import reactIcon from '../assets/tech/react-svgrepo-com.svg';
 import javaIcon from '../assets/tech/java-svgrepo-com.svg';
