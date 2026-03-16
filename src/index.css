@@ -80,6 +80,11 @@
   }
 }
 
+@keyframes loading {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
 @utility dot-grid {
   background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
   background-size: 24px 24px;

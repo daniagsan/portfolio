@@ -1,20 +1,20 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Layers } from 'lucide-react';
-import { SectionHeader } from './SectionHeader';
-import { projectsData, designProjectsData } from '../data/mockData';
-import Loader from './Cube';
-import Switch from './Switch';
-import { ImageViewer } from '../components/pdf/Viewer';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { projectsData, designProjectsData } from '@/data/portfolio';
+import ProjectCube from './ProjectCube';
+import Switch from '@/components/ui/Switch';
+import { ImageViewer } from './ImageViewer';
 
 const cEaDRaw = import.meta.glob<string>(
-  '../assets/pdf/CEaD_ManualdeIdentidad/*.webp',
+  '@/assets/pdf/CEaD_ManualdeIdentidad/*.webp',
   { eager: true, query: '?url', import: 'default' }
 );
 const cEaDPages = Object.keys(cEaDRaw).sort().map(k => cEaDRaw[k]);
 
 const dDIERaw = import.meta.glob<string>(
-  '../assets/pdf/DDIE_ManualdeIDentidad/*.webp',
+  '@/assets/pdf/DDIE_ManualdeIDentidad/*.webp',
   { eager: true, query: '?url', import: 'default' }
 );
 const dDIEPages = Object.keys(dDIERaw).sort().map(k => dDIERaw[k]);
@@ -36,6 +36,13 @@ export function ProjectsSection() {
     if (pinned) setActiveProjectIndex(index);
   }, []);
 
+  const handleModeChange = useCallback((checked: boolean) => {
+    setIsDesignMode(checked);
+    setIsPinned(false);
+    setSelectedDoc(null);
+    setActiveProjectIndex(0);
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedDoc(null); };
     window.addEventListener('keydown', onKey);
@@ -48,7 +55,7 @@ export function ProjectsSection() {
   return (
     <section className="w-full h-full relative flex flex-col justify-center" id="projects">
 
-      {selectedDoc !== null && (
+      {isDesignMode && selectedDoc !== null && (
         <motion.div
           key={selectedDoc}
           initial={{ opacity: 0 }}
@@ -99,13 +106,13 @@ export function ProjectsSection() {
           </p>
           <Switch
             checked={isDesignMode}
-            onChange={setIsDesignMode}
+            onChange={handleModeChange}
           />
         </div>
       </SectionHeader>
 
       <div className="h-100 relative flex items-center justify-center -gap-2">
-        <Loader onPinChange={handlePinChange} isDesignMode={isDesignMode} />
+        <ProjectCube onPinChange={handlePinChange} isDesignMode={isDesignMode} />
         <span
           className={`absolute top-1/2 -translate-y-1/2 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${isPinned ? 'opacity-100 left-[calc(15%+140px)]' : 'opacity-0 left-[calc(50%+140px)] pointer-events-none'
             }`}
@@ -136,33 +143,50 @@ export function ProjectsSection() {
           >
             <div className="font-heading font-bold text-xs uppercase tracking-[0.2em] text-black flex items-center gap-3">
               {activeProject.title}
-              {isDesignMode && (
-                <span className="inline-block bg-black text-white font-mono text-[9px] border border-white/10 px-1.5 py-0.5 tracking-wider uppercase">
-                  [BRAND_MANUAL]
-                </span>
-              )}
+              <span className="inline-block bg-black text-white font-mono text-[9px] px-1.5 py-0.5 tracking-wider uppercase">
+                {isDesignMode ? '[BRAND_MANUAL]' : '[CASE_STUDY]'}
+              </span>
             </div>
 
-            <div className="flex gap-4">
-              {DOCS.map((doc, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedDoc(i)}
-                  className="group flex flex-col gap-2 w-1/2 text-left"
-                >
-                  <div className="border-2 border-black/10 overflow-hidden group-hover:border-black transition-colors duration-200">
-                    <img
-                      src={doc.pages[0]}
-                      alt={doc.title}
-                      className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300"
-                    />
-                  </div>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-black/50 group-hover:text-black transition-colors">
-                    {doc.title}
-                  </span>
-                </button>
-              ))}
-            </div>
+            {isDesignMode ? (
+              <div className="flex gap-4">
+                {DOCS.map((doc, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedDoc(i)}
+                    className="group flex flex-col gap-2 w-1/2 text-left"
+                  >
+                    <div className="border-2 border-black/10 overflow-hidden group-hover:border-black transition-colors duration-200">
+                      <img
+                        src={doc.pages[0]}
+                        alt={doc.title}
+                        className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-black/50 group-hover:text-black transition-colors">
+                      {doc.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                <p className="font-body text-sm text-black/70 leading-relaxed">
+                  {activeProject.description}
+                </p>
+                <div className="flex flex-col gap-1">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-black/40">Platform</span>
+                  <span className="font-mono text-xs text-black">{activeProject.platform}</span>
+                </div>
+                <div className="flex flex-wrap gap-1.5 mt-1">
+                  {activeProject.techStack.map((tech) => (
+                    <span key={tech} className="font-mono text-[10px] border border-black/20 px-2 py-0.5 uppercase tracking-wide">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
         )}
       </div>

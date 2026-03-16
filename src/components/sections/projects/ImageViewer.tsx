@@ -1,5 +1,4 @@
-// src/components/pdf/ImageViewer.tsx
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface ImageViewerProps {
     pages: string[];
@@ -9,11 +8,15 @@ interface ImageViewerProps {
 export const ImageViewer = ({ pages, title }: ImageViewerProps) => {
     const [current, setCurrent] = useState(0);
 
-    const prev = () => setCurrent(p => Math.max(0, p - 1));
-    const next = () => setCurrent(p => Math.min(pages.length - 1, p + 1));
+    const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
+    const next = useCallback(() => setCurrent(p => Math.min(pages.length - 1, p + 1)), [pages.length]);
 
     return (
         <section className="flex flex-col gap-3 w-full min-h-0 flex-1">
+            {/* Preload adjacent pages to eliminate flash on navigation */}
+            {current > 0 && <img src={pages[current - 1]} alt="" aria-hidden className="hidden" />}
+            {current < pages.length - 1 && <img src={pages[current + 1]} alt="" aria-hidden className="hidden" />}
+
             <div className="flex-1 min-h-0">
                 <img
                     key={current}

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { containerVariants, itemVariants } from '../animations';
-import { SectionHeader } from './SectionHeader';
-import { experienceData } from '../data/mockData';
+import { containerVariants, itemVariants } from '@/lib/animations';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { experienceData } from '@/data/portfolio';
 
 export function ExperienceSection() {
   return (

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { containerVariants, itemVariants } from '../animations';
-import { SectionHeader } from './SectionHeader';
-import { educationData } from '../data/mockData';
+import { containerVariants, itemVariants } from '@/lib/animations';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { educationData } from '@/data/portfolio';
 
 export function EducationSection() {
   return (
@@ -19,7 +19,7 @@ export function EducationSection() {
           <motion.div
             key={index}
             variants={itemVariants}
-            className="flex flex-col border-2 border-black p-6 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,0)] hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
+            className="flex flex-col border-2 border-black p-6 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
             <h3 className="font-heading font-bold text-base text-black mb-1 uppercase tracking-tight">
               {item.degree}

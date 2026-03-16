@@ -1,5 +1,5 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
-import { projectsData, designProjectsData } from '../data/mockData';
+import { projectsData, designProjectsData } from '@/data/portfolio';
 
 const DAMPING = 0.97;
 const MIN_VELOCITY = 0.05;
@@ -33,6 +33,8 @@ const getActiveFace = (rotX: number, rotY: number) => {
     return faces.reduce((prev, curr) => (curr.z > prev.z ? curr : prev)).id;
 };
 
+const RUBIK_CELLS = Array.from({ length: 9 });
+
 const FACE_CONFIGS = [
     { transform: `translateZ(${CUBE_SIZE / 2}px)`, bg: 'rgb(0,0,0)' },
     { transform: `rotateY(180deg) translateZ(${CUBE_SIZE / 2}px)`, bg: 'rgb(0,0,0)' },
@@ -47,7 +49,7 @@ interface CubeProps {
     isDesignMode?: boolean;
 }
 
-export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
+export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeProps) {
     const cubeRef = useRef<HTMLDivElement>(null);
     const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
     const stateRef = useRef({
@@ -153,7 +155,7 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
             setActiveIndex(currentActive);
             setIsPinned(true);
             setIsCharging(false);
-        }, 4000);
+        }, 2000);
     }, [isPinned]);
 
     const onPointerMove = useCallback((e: React.PointerEvent) => {
@@ -186,7 +188,7 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
                     setActiveIndex(currentActive);
                     setIsPinned(true);
                     setIsCharging(false);
-                }, 4000);
+                }, 2000);
                 return true;
             } else if (!shouldBeCharging && prev) {
                 if (holdTimerRef.current) {
@@ -218,7 +220,7 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
             const face = RUBIK_FACES[idx] || RUBIK_FACES[0];
             return (
                 <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 gap-[3px] p-[3px]">
-                    {Array.from({ length: 9 }).map((_, cellIdx) => (
+                    {RUBIK_CELLS.map((_, cellIdx) => (
                         <div
                             key={cellIdx}
                             className="rounded-[2px] transition-all duration-500"
@@ -235,7 +237,7 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
                             />
                             {isCharging && (
                                 <div className="w-12 h-1 overflow-hidden bg-black/20">
-                                    <div className="h-full bg-black animate-[loading_4s_linear_forwards]" />
+                                    <div className="h-full bg-black animate-[loading_2s_linear_forwards]" />
                                 </div>
                             )}
                             <h3
@@ -262,7 +264,7 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
                             />
                             {isCharging && (
                                 <div className="absolute -bottom-2 w-16 h-1 bg-white/20 overflow-hidden">
-                                    <div className="h-full bg-white animate-[loading_4s_linear_forwards]" />
+                                    <div className="h-full bg-white animate-[loading_2s_linear_forwards]" />
                                 </div>
                             )}
                         </div>
@@ -315,12 +317,6 @@ export default function Cube({ onPinChange, isDesignMode = false }: CubeProps) {
                     </div>
                 ))}
             </div>
-            <style>{`
-                @keyframes loading {
-                    from { width: 0; }
-                    to { width: 100%; }
-                }
-            `}</style>
         </div>
     );
 }

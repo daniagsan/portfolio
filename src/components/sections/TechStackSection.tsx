@@ -2,18 +2,18 @@ import { useState, useRef } from 'react';
 import type { RefObject } from 'react';
 import { motion } from 'framer-motion';
 
-import { techStack } from '../data/mockData';
-import { useFloatingBot } from '../hooks/useFloatingBot';
-import { SectionHeader } from './SectionHeader';
+import { techStack } from '@/data/portfolio';
+import { useFloatingBot } from '@/hooks/useFloatingBot';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
-import jsIcon from '../assets/tech/js-svgrepo-com.svg';
-import playwrightIcon from '../assets/tech/playwright.svg';
-import redisIcon from '../assets/tech/redis-svgrepo-com.svg';
-import figmaIcon from '../assets/tech/figma-svgrepo-com.svg';
-import psIcon from '../assets/tech/photoshop-svgrepo-com.svg';
-import aiIcon from '../assets/tech/brand-adobe-illustrator-svgrepo-com.svg';
-import claudeIcon from '../assets/tech/claude.svg';
-import geminiIcon from '../assets/tech/gemini.svg';
+import jsIcon from '@/assets/tech/js-svgrepo-com.svg';
+import playwrightIcon from '@/assets/tech/playwright.svg';
+import redisIcon from '@/assets/tech/redis-svgrepo-com.svg';
+import figmaIcon from '@/assets/tech/figma-svgrepo-com.svg';
+import psIcon from '@/assets/tech/photoshop-svgrepo-com.svg';
+import aiIcon from '@/assets/tech/brand-adobe-illustrator-svgrepo-com.svg';
+import claudeIcon from '@/assets/tech/claude.svg';
+import geminiIcon from '@/assets/tech/gemini.svg';
 
 const ParticleBurst = ({ x, y, onComplete }: { x: number; y: number; onComplete: () => void }) => (
   <div className="absolute pointer-events-none" style={{ left: x, top: y, zIndex: 100 }}>
@@ -128,14 +128,14 @@ export function TechStackSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, margin: '-10%' }}
-          transition={{ delay: 1.0, duration: 0.8, ease: 'easeOut' }}
-          className="flex flex-col h-full gap-6"
-        >
-          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
+        <div className="flex flex-col h-full gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-10%' }}
+            transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+          >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Front End
             </span>
@@ -146,11 +146,16 @@ export function TechStackSection() {
               <div className="w-12 h-12 bg-white border-2 border-black flex items-center justify-center p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                 <img src={jsIcon} alt="JavaScript" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
-
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-10%' }}
+            transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+          >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Back End
             </span>
@@ -165,9 +170,15 @@ export function TechStackSection() {
                 <img src={redisIcon} alt="Redis" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-10%' }}
+            transition={{ delay: 0.7, duration: 0.6, ease: 'easeOut' }}
+            className="w-full p-3 bg-white border-2 border-dashed border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+          >
             <span className="font-mono text-xs uppercase block text-black font-bold mb-2">
               // Design & UX
             </span>
@@ -185,8 +196,8 @@ export function TechStackSection() {
                 <img src={psIcon} alt="Photoshop" className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

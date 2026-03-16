@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { MailIcon, Github, Linkedin } from 'lucide-react';
-import profilePic from '../assets/img/84d89292-633c-46b6-8a54-aed1d0c98f62 (1).jpeg';
+import profilePic from '@/assets/img/profile.jpeg';
 
 // Subcomponents
 function HeroProfile() {

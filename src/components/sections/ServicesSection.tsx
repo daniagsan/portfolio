@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { containerVariants } from '../animations';
-import { SectionHeader } from './SectionHeader';
-import type { ServiceItem } from '../data/mockData';
-import { servicesData } from '../data/mockData';
+import { containerVariants } from '@/lib/animations';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import type { ServiceItem } from '@/data/portfolio';
+import { servicesData } from '@/data/portfolio';
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
