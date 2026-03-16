@@ -73,80 +73,80 @@ export const experienceData: ReadonlyArray<ExperienceItem> = [
         role: 'Full Stack Web Developer (JSP-Servlet)',
         organization: 'General Directorate of IT (B.C.S. Government)',
         timeframe: 'Feb 2025 – Present',
-        impact: 'Designed and developed web interfaces bridging front-end and back-end for government systems. Managed data integration using Java Servlets and PostgreSQL, implementing dynamic filters and interactive maps.'
+        impact: 'Architecting mission-critical web interfaces for state-level systems. Streamlining data integration between Java Servlets and PostgreSQL to optimize complex filtering and real-time geographic data visualization for government oversight.'
     },
     {
         role: 'Data Entry Supervisor',
         organization: 'Electoral State Institute (IEE)',
         timeframe: 'May 2024 – Jun 2024',
-        impact: 'Supervised staff and executed system testing/QA protocols for electronic voting systems, ensuring data integrity during critical election periods.'
+        impact: 'Spearheaded QA protocols and staff supervision for electronic voting systems, ensuring absolute data integrity and zero-downtime availability during high-security electoral cycles.'
     },
     {
         role: 'Personal Interpreter Spanish to English (OPEP)',
         organization: 'UABCS',
         timeframe: 'Aug 2023 – Nov 2023',
-        impact: 'Facilitated cross-cultural japanese/english/spanish communication and translated educational materials for the Overseas Practical Education Program students.'
+        impact: 'Bridged cross-cultural communication gaps for the Overseas Practical Education Program, facilitating high-level technical and educational knowledge transfer between Japanese, English, and Spanish speaking stakeholders.'
     },
     {
         role: 'Website Administrator & Copywriter',
         organization: 'TV Baja / State Congress of B.C.S.',
         timeframe: 'Oct 2021 – Aug 2022',
-        impact: 'Managed digital content, government institutional reporting, and web administration for legislative news and transparency.'
+        impact: 'Managed institutional digital infrastructure and transparency reporting. Developed high-impact content strategies for legislative communication, ensuring public accessibility to government proceedings.'
     }
 ];
 
 export const processSteps: ReadonlyArray<ProcessStep> = [
     {
         id: '01',
-        title: 'Semantic Discovery',
-        description: 'Analyzing data flows and user requirements to extract structured meaning.',
+        title: 'Requirement Mapping',
+        description: 'Analyzing complex data flows and stakeholder requirements to engineer structured technical roadmaps.',
         icon: Brain
     },
     {
         id: '02',
-        title: 'Hardened Design',
-        description: 'Architecting secure, containerized microservices with robust concurrency guards.',
+        title: 'Enterprise Architecture',
+        description: 'Architecting secure, containerized microservices with robust concurrency guards and high-availability protocols.',
         icon: Settings
     },
     {
         id: '03',
-        title: 'Full-Stack Bridge',
-        description: 'Building intuitive UIs backed by high-performance asynchronous logic.',
+        title: 'Full-Stack Integration',
+        description: 'Developing high-performance user interfaces backed by resilient, asynchronous backend logic.',
         icon: Code
     },
     {
         id: '04',
-        title: 'AI Orchestration',
-        description: 'Scaling intelligence by integrating LLMs into automated background workflows.',
+        title: 'Intelligent Automation',
+        description: 'Scaling operational capacity by integrating advanced LLM orchestration into automated background workflows.',
         icon: BrainCircuit
     },
     {
         id: '05',
-        title: 'Reliable Delivery',
-        description: 'Ensuring operational integrity through atomic transactions and high availability.',
+        title: 'Operational Integrity',
+        description: 'Ensuring mission-critical reliability through atomic transactions, rigorous testing, and high-availability delivery.',
         icon: TreePalm
     }
 ];
 
 export const servicesData: ReadonlyArray<ServiceItem> = [
     {
-        title: 'High-Concurrency Backends',
-        description: 'I\'ll transform your scaling bottlenecks into a high-availability fortress.',
+        title: 'High-Concurrency Systems',
+        description: 'Transforming technical bottlenecks into high-availability architectures capable of handling enterprise-scale traffic.',
         icon: Code
     },
     {
-        title: 'Automation Systems',
-        description: 'I\'ll turn your repetitive manual chaos into a self-running, high-efficiency automated machine.',
+        title: 'Process Orchestration',
+        description: 'Eliminating operational friction by replacing manual complexity with autonomous, high-efficiency automation layers.',
         icon: Cog
     },
     {
-        title: 'Intelligent Data Pipelines',
-        description: 'I can take your messy data and make it useful.',
+        title: 'Business Intelligence Pipelines',
+        description: 'Engineering robust data ETL pipelines to transform fragmented datasets into actionable strategic insights.',
         icon: BrainCircuit
     },
     {
-        title: 'Strategic Product UX',
-        description: 'I\'ll rescue your confusing user journeys and evolve them into seamless, high-converting experiences.',
+        title: 'Data-Driven UX Strategy',
+        description: 'Optimizing complex user journeys to align technical capabilities with seamless, high-conversion business goals.',
         icon: Smartphone
     }
 ];

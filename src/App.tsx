@@ -23,7 +23,7 @@ const Skeleton = () => (
   </div>
 );
 
-const SectionWrapper = ({ children, eager = false }: { children: React.ReactNode; eager?: boolean }) => {
+const SectionWrapper = ({ children, eager = false, id }: { children: React.ReactNode; eager?: boolean; id?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(eager);
 
@@ -43,7 +43,7 @@ const SectionWrapper = ({ children, eager = false }: { children: React.ReactNode
   }, [eager]);
 
   return (
-    <div ref={ref} className="h-[100dvh] w-full snap-start flex-shrink-0 flex flex-col overflow-y-hidden">
+    <div ref={ref} id={id} className="h-[100dvh] w-full snap-start flex-shrink-0 flex flex-col overflow-y-hidden">
       <div className="w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col justify-center h-full py-10">
         {shouldRender ? (
           <Suspense fallback={<Skeleton />}>
@@ -63,9 +63,9 @@ export function App() {
       <SectionWrapper eager><HeroSection /></SectionWrapper>
       <SectionWrapper><ProcessSection /></SectionWrapper>
       <SectionWrapper><ServicesSection /></SectionWrapper>
-      <SectionWrapper><TechStackSection /></SectionWrapper>
+      <SectionWrapper id="stack"><TechStackSection /></SectionWrapper>
       <SectionWrapper><ExperienceSection /></SectionWrapper>
-      <SectionWrapper><ProjectsSection /></SectionWrapper>
+      <SectionWrapper id="projects"><ProjectsSection /></SectionWrapper>
       <SectionWrapper><EducationSection /></SectionWrapper>
     </div>
   );
