@@ -9,7 +9,6 @@ import postgresIcon from '../assets/tech/postgresql-svgrepo-com.svg';
 import dockerIcon from '../assets/tech/docker-16-svgrepo-com.svg';
 import tsIcon from '../assets/tech/typescript-svgrepo-com.svg';
 
-// Common interfaces
 export interface EducationItem {
     degree: string;
     description: string;
@@ -56,7 +55,6 @@ export interface TechStackItem {
     icon: string | ReactNode;
 }
 
-// Data Exports
 export const educationData: ReadonlyArray<EducationItem> = [
     {
         degree: 'Bachelor’s Degree in Software Development Engineering',

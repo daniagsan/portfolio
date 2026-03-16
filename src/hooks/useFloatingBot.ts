@@ -22,7 +22,6 @@ export function useFloatingBot({
     const reqRef = useRef<number>();
     const onCollideRef = useRef(onCollide);
 
-    // Keep the callback ref current without restarting the animation loop
     useEffect(() => { onCollideRef.current = onCollide; });
 
     useEffect(() => {
@@ -72,7 +71,6 @@ export function useFloatingBot({
 
             posRef.current = { x: nextX, y: nextY };
 
-            // Imperative DOM update — bypasses React reconciler entirely
             if (domRef.current) {
                 domRef.current.style.transform = `translate(${nextX}px, ${nextY}px)`;
             }
