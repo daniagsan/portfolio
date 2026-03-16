@@ -201,3 +201,5 @@ export function TechStackSection() {
     </section>
   );
 }
+
+export default TechStackSection;

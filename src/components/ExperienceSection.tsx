@@ -44,3 +44,5 @@ export function ExperienceSection() {
     </section>
   );
 }
+
+export default ExperienceSection;

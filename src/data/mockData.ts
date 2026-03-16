@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Brain, Settings, HardHat, Bot, Code, Cog, BrainCircuit, Smartphone, TreePalm } from 'lucide-react';
+import { Brain, Settings, HardHat, Bot, Code, Cog, BrainCircuit, Smartphone, TreePalm, Layers, Component, PenTool, Palette, BookOpen, Shapes } from 'lucide-react';
 
 import reactIcon from '../assets/tech/react-svgrepo-com.svg';
 import javaIcon from '../assets/tech/java-svgrepo-com.svg';
@@ -201,6 +201,57 @@ export const projectsData: ReadonlyArray<ProjectItem> = [
         platform: 'Cloud / Docker',
         type: 'Infrastructure - Scalable microservices with concurrency guards and atomic transaction integrity.',
         techStack: ['Django', 'Docker Compose', 'PostgreSQL', 'Redis']
+    }
+];
+
+export const designProjectsData: ReadonlyArray<ProjectItem> = [
+    {
+        title: 'Corporate Identity System',
+        description: 'Complete brand identity manual for a real estate corporation, including logo system, typography hierarchy, and color architecture.',
+        icon: Layers,
+        platform: 'Print / Digital',
+        type: 'Brand Manual - Full identity system with usage guidelines and asset library.',
+        techStack: ['Illustrator', 'InDesign', 'Figma', 'Brand Strategy']
+    },
+    {
+        title: 'Product Brand Kit',
+        description: 'Visual identity and packaging design system for a consumer product line with scalable brand elements.',
+        icon: Component,
+        platform: 'Multi-format',
+        type: 'Product Identity - Cohesive visual language across packaging, digital, and print touchpoints.',
+        techStack: ['Photoshop', 'Illustrator', 'Figma', 'Color Theory']
+    },
+    {
+        title: 'Digital Experience Design',
+        description: 'UI/UX design system and interactive prototypes for a fintech application with accessibility-first approach.',
+        icon: PenTool,
+        platform: 'Web / Mobile',
+        type: 'UX System - Design tokens, component library, and interaction patterns.',
+        techStack: ['Figma', 'Prototyping', 'Design Systems', 'A11y']
+    },
+    {
+        title: 'Visual Language Guide',
+        description: 'Comprehensive visual communication system including iconography, illustration style, and photography direction.',
+        icon: Palette,
+        platform: 'Cross-media',
+        type: 'Visual System - Unified visual grammar for brand consistency across all channels.',
+        techStack: ['Illustrator', 'Photography', 'Art Direction', 'Style Guide']
+    },
+    {
+        title: 'Editorial Design System',
+        description: 'Publication design framework with modular grid system, typographic scale, and content templates.',
+        icon: BookOpen,
+        platform: 'Print / Digital Publishing',
+        type: 'Editorial - Systematic approach to content layout and typographic hierarchy.',
+        techStack: ['InDesign', 'Typography', 'Grid Systems', 'Print Production']
+    },
+    {
+        title: 'Brand Architecture',
+        description: 'Multi-brand organizational structure defining relationships, naming conventions, and visual differentiation strategies.',
+        icon: Shapes,
+        platform: 'Strategic / All Media',
+        type: 'Brand Strategy - Hierarchical brand framework for portfolio management.',
+        techStack: ['Brand Strategy', 'Figma', 'Illustrator', 'Research']
     }
 ];
 

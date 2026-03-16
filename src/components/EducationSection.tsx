@@ -36,3 +36,5 @@ export function EducationSection() {
     </section>
   );
 }
+
+export default EducationSection;

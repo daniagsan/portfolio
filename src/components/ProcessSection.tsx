@@ -57,3 +57,5 @@ export function ProcessSection() {
     </section>
   );
 }
+
+export default ProcessSection;

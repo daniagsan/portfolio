@@ -12,6 +12,9 @@ function HeroProfile() {
         <img
           src={profilePic}
           alt="Profile"
+          width={224}
+          height={224}
+          loading="eager"
           className="w-full h-full object-cover transition-all duration-300"
         />
       </div>

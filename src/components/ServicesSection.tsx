@@ -83,3 +83,5 @@ export function ServicesSection() {
     </section>
   );
 }
+
+export default ServicesSection;

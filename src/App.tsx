@@ -1,12 +1,12 @@
 import { Suspense, lazy } from 'react';
 import { HeroSection } from './components/HeroSection';
 
-const ProcessSection = lazy(() => import('./components/ProcessSection').then(m => ({ default: m.ProcessSection })));
-const ServicesSection = lazy(() => import('./components/ServicesSection').then(m => ({ default: m.ServicesSection })));
-const TechStackSection = lazy(() => import('./components/TechStackSection').then(m => ({ default: m.TechStackSection })));
-const ExperienceSection = lazy(() => import('./components/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
-const ProjectsSection = lazy(() => import('./components/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
-const EducationSection = lazy(() => import('./components/EducationSection').then(m => ({ default: m.EducationSection })));
+const ProcessSection = lazy(() => import('./components/ProcessSection'));
+const ServicesSection = lazy(() => import('./components/ServicesSection'));
+const TechStackSection = lazy(() => import('./components/TechStackSection'));
+const ExperienceSection = lazy(() => import('./components/ExperienceSection'));
+const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
+const EducationSection = lazy(() => import('./components/EducationSection'));
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="h-[100dvh] w-full snap-start flex-shrink-0 flex flex-col overflow-y-hidden">
