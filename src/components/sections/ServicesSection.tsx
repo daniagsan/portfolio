@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { containerVariants } from '@/lib/animations';
@@ -21,7 +22,7 @@ const cardAnimations = {
   hoverTextWrapper: "opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 ease-out pointer-events-none group-hover:pointer-events-auto"
 };
 
-const ServiceCard = ({ service, className }: { service: ServiceItem; className?: string }) => {
+const ServiceCard = memo(({ service, className }: { service: ServiceItem; className?: string }) => {
   const Icon = service.icon;
   return (
     <motion.article
@@ -53,7 +54,7 @@ const ServiceCard = ({ service, className }: { service: ServiceItem; className?:
       </div>
     </motion.article>
   );
-};
+});
 
 export function ServicesSection() {
   return (

@@ -15,9 +15,9 @@ export function EducationSection() {
         whileInView="visible"
         viewport={{ once: true, margin: '-10%' }}
       >
-        {educationData.map((item, index) => (
+        {educationData.map((item) => (
           <motion.div
-            key={index}
+            key={item.institution}
             variants={itemVariants}
             className="flex flex-col border-2 border-black p-6 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >

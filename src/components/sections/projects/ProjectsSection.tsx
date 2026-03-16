@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useTransition } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Layers } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -36,11 +36,15 @@ export function ProjectsSection() {
     if (pinned) setActiveProjectIndex(index);
   }, []);
 
+  const [, startTransition] = useTransition();
+
   const handleModeChange = useCallback((checked: boolean) => {
-    setIsDesignMode(checked);
-    setIsPinned(false);
-    setSelectedDoc(null);
-    setActiveProjectIndex(0);
+    startTransition(() => {
+      setIsDesignMode(checked);
+      setIsPinned(false);
+      setSelectedDoc(null);
+      setActiveProjectIndex(0);
+    });
   }, []);
 
   useEffect(() => {
@@ -152,7 +156,7 @@ export function ProjectsSection() {
               <div className="flex gap-4">
                 {DOCS.map((doc, i) => (
                   <button
-                    key={i}
+                    key={doc.title}
                     onClick={() => setSelectedDoc(i)}
                     className="group flex flex-col gap-2 w-1/2 text-left"
                   >

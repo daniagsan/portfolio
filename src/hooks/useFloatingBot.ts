@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 interface UseFloatingBotProps {
+    domRef: React.RefObject<HTMLDivElement>;
     initialX: number;
     initialY: number;
     containerRef: React.RefObject<HTMLDivElement>;
@@ -9,13 +10,13 @@ interface UseFloatingBotProps {
 }
 
 export function useFloatingBot({
+    domRef,
     initialX,
     initialY,
     containerRef,
     isHovered,
     onCollide
 }: UseFloatingBotProps) {
-    const [pos, setPos] = useState({ x: initialX, y: initialY });
     const posRef = useRef({ x: initialX, y: initialY });
     const velocity = useRef({ x: Math.random() > 0.5 ? 2 : -2, y: Math.random() > 0.5 ? 2 : -2 });
     const reqRef = useRef<number>();
@@ -70,7 +71,12 @@ export function useFloatingBot({
             }
 
             posRef.current = { x: nextX, y: nextY };
-            setPos({ x: nextX, y: nextY });
+
+            // Imperative DOM update — bypasses React reconciler entirely
+            if (domRef.current) {
+                domRef.current.style.transform = `translate(${nextX}px, ${nextY}px)`;
+            }
+
             reqRef.current = requestAnimationFrame(update);
         };
 
@@ -78,7 +84,5 @@ export function useFloatingBot({
         return () => {
             if (reqRef.current) cancelAnimationFrame(reqRef.current);
         };
-    }, [isHovered, containerRef]);
-
-    return pos;
+    }, [isHovered, containerRef, domRef]);
 }

@@ -15,9 +15,9 @@ export function ExperienceSection() {
         viewport={{ once: false, margin: '-10%' }}
         className="flex flex-col"
       >
-        {experienceData.map((exp, index) => (
+        {experienceData.map((exp) => (
           <motion.div
-            key={index}
+            key={`${exp.organization}-${exp.timeframe}`}
             variants={itemVariants}
             className="py-3 border-b-2 border-black last:border-0 group"
           >

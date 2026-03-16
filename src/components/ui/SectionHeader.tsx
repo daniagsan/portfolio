@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 interface SectionHeaderProps {
   label: string;
   title: string;
@@ -5,7 +7,7 @@ interface SectionHeaderProps {
   children?: React.ReactNode;
 }
 
-export function SectionHeader({
+export const SectionHeader = memo(function SectionHeader({
   label,
   title,
   className = 'mb-16 w-full',
@@ -22,4 +24,4 @@ export function SectionHeader({
       {children}
     </div>
   );
-}
+});

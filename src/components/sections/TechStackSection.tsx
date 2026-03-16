@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback, memo } from 'react';
 import type { RefObject } from 'react';
 import { motion } from 'framer-motion';
 
@@ -15,7 +15,7 @@ import aiIcon from '@/assets/tech/brand-adobe-illustrator-svgrepo-com.svg';
 import claudeIcon from '@/assets/tech/claude.svg';
 import geminiIcon from '@/assets/tech/gemini.svg';
 
-const ParticleBurst = ({ x, y, onComplete }: { x: number; y: number; onComplete: () => void }) => (
+const ParticleBurst = memo(({ x, y, onComplete }: { x: number; y: number; onComplete: () => void }) => (
   <div className="absolute pointer-events-none" style={{ left: x, top: y, zIndex: 100 }}>
     {Array.from({ length: 8 }).map((_, i) => {
       const angle = (i * 45) * (Math.PI / 180);
@@ -37,7 +37,7 @@ const ParticleBurst = ({ x, y, onComplete }: { x: number; y: number; onComplete:
       );
     })}
   </div>
-);
+));
 
 interface FloatingBotProps {
   name: string;
@@ -48,14 +48,16 @@ interface FloatingBotProps {
   onCollide: (x: number, y: number) => void;
 }
 
-const FloatingBot = ({ name, icon, initialX, initialY, containerRef, onCollide }: Readonly<FloatingBotProps>) => {
+const FloatingBot = memo(({ name, icon, initialX, initialY, containerRef, onCollide }: Readonly<FloatingBotProps>) => {
   const [isHovered, setIsHovered] = useState(false);
-  const pos = useFloatingBot({ initialX, initialY, containerRef, isHovered, onCollide });
+  const divRef = useRef<HTMLDivElement>(null);
+  useFloatingBot({ domRef: divRef, initialX, initialY, containerRef, isHovered, onCollide });
 
   return (
     <div
-      className="absolute border-2 border-black bg-white px-4 py-2 font-heading font-bold uppercase z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer transition-transform"
-      style={{ left: pos.x, top: pos.y }}
+      ref={divRef}
+      className="absolute border-2 border-black bg-white px-4 py-2 font-heading font-bold uppercase z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer"
+      style={{ left: 0, top: 0, transform: `translate(${initialX}px, ${initialY}px)` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -63,21 +65,21 @@ const FloatingBot = ({ name, icon, initialX, initialY, containerRef, onCollide }
       <span className="text-sm">{name}</span>
     </div>
   );
-};
+});
 
 export function TechStackSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const particleId = useRef(0);
 
-  const handleCollide = (x: number, y: number) => {
+  const handleCollide = useCallback((x: number, y: number) => {
     const id = particleId.current++;
     setParticles(prev => [...prev, { id, x, y }]);
-  };
+  }, []);
 
-  const removeParticle = (id: number) => {
+  const removeParticle = useCallback((id: number) => {
     setParticles(prev => prev.filter(p => p.id !== id));
-  };
+  }, []);
 
   return (
     <section className="w-full relative flex flex-col" id="stack" ref={containerRef}>

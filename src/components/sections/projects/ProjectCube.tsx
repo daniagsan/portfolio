@@ -1,5 +1,5 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
-import { projectsData, designProjectsData } from '@/data/portfolio';
+import { useRef, useEffect, useCallback, useState, memo } from 'react';
+import { projectsData, designProjectsData, type ProjectItem } from '@/data/portfolio';
 
 const DAMPING = 0.97;
 const MIN_VELOCITY = 0.05;
@@ -49,9 +49,79 @@ interface CubeProps {
     isDesignMode?: boolean;
 }
 
-export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeProps) {
+interface FaceContentProps {
+    idx: number;
+    isCharging: boolean;
+    isDesignMode: boolean;
+    project: ProjectItem | undefined;
+}
+
+const FaceContent = memo(function FaceContent({ idx, isCharging, isDesignMode, project }: FaceContentProps) {
+    const Icon = project?.icon;
+
+    if (isDesignMode) {
+        const face = RUBIK_FACES[idx] || RUBIK_FACES[0];
+        return (
+            <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 gap-[3px] p-[3px]">
+                {RUBIK_CELLS.map((_, cellIdx) => (
+                    <div
+                        key={cellIdx}
+                        className="rounded-[2px] transition-all duration-500"
+                        style={{ background: face.bg }}
+                    />
+                ))}
+                {project && Icon && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                        <Icon
+                            size={32}
+                            strokeWidth={1.5}
+                            className={`mb-2 text-black drop-shadow-md transition-all ${isCharging ? 'animate-spin' : ''}`}
+                        />
+                        {isCharging && (
+                            <div className="w-12 h-1 overflow-hidden bg-black/20">
+                                <div className="h-full bg-black animate-[loading_2s_linear_forwards]" />
+                            </div>
+                        )}
+                        <h3
+                            className={`font-heading font-bold text-[9px] text-center uppercase tracking-[0.15em] leading-tight inline bg-black text-white px-2 py-1 transition-opacity ${isCharging ? 'opacity-0' : ''}`}
+                        >
+                            {project.title}
+                        </h3>
+                    </div>
+                )}
+            </div>
+        );
+    }
+
+    return (
+        <>
+            {project && Icon && (
+                <>
+                    <div className="relative flex flex-col items-center justify-center">
+                        <Icon
+                            size={40}
+                            strokeWidth={1.5}
+                            className={`text-white mb-4 transition-all ${isCharging ? 'animate-spin' : ''}`}
+                        />
+                        {isCharging && (
+                            <div className="absolute -bottom-2 w-16 h-1 bg-white/20 overflow-hidden">
+                                <div className="h-full bg-white animate-[loading_2s_linear_forwards]" />
+                            </div>
+                        )}
+                    </div>
+                    <h3 className={`font-heading font-bold text-[10px] text-center uppercase text-white tracking-[0.2em] leading-tight px-2 transition-opacity ${isCharging ? 'opacity-0' : ''}`}>
+                        {project.title}
+                    </h3>
+                </>
+            )}
+        </>
+    );
+});
+
+function ProjectCube({ onPinChange, isDesignMode = false }: CubeProps) {
     const cubeRef = useRef<HTMLDivElement>(null);
     const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const isChargingRef = useRef(false);
     const stateRef = useRef({
         rotX: -25,
         rotY: 35,
@@ -63,6 +133,7 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
         lastPointerTime: 0,
         floatOffset: 0,
         animId: 0,
+        isPinned: false,
     });
 
     const [isDragging, setIsDragging] = useState(false);
@@ -72,6 +143,11 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
 
     const currentData = isDesignMode ? designProjectsData : projectsData;
 
+    // Keep stateRef.isPinned in sync with React state
+    useEffect(() => {
+        stateRef.current.isPinned = isPinned;
+    }, [isPinned]);
+
     useEffect(() => {
         onPinChange?.(isPinned, activeIndex);
     }, [isPinned, activeIndex, onPinChange]);
@@ -80,8 +156,16 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
     useEffect(() => {
         setIsPinned(false);
         setActiveIndex(0);
+        setIsCharging(false);
+        isChargingRef.current = false;
+        if (holdTimerRef.current) {
+            clearTimeout(holdTimerRef.current);
+            holdTimerRef.current = null;
+        }
+        stateRef.current.isDragging = false;
     }, [isDesignMode]);
 
+    // animate reads isPinned from stateRef — never recreated
     const animate = useCallback(() => {
         const s = stateRef.current;
         const now = performance.now();
@@ -96,11 +180,11 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
             if (Math.abs(s.velY) < MIN_VELOCITY) s.velY = 0;
 
             if (s.velX === 0 && s.velY === 0) {
-                s.velY = isPinned ? 0 : 0.15;
+                s.velY = s.isPinned ? 0 : 0.15;
             }
         }
 
-        const amplitude = isPinned ? FLOAT_AMPLITUDE / 2 : FLOAT_AMPLITUDE;
+        const amplitude = s.isPinned ? FLOAT_AMPLITUDE / 2 : FLOAT_AMPLITUDE;
         s.floatOffset = Math.sin(now * FLOAT_SPEED) * amplitude;
 
         if (cubeRef.current) {
@@ -109,7 +193,7 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
         }
 
         s.animId = requestAnimationFrame(animate);
-    }, [isPinned]);
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -125,6 +209,7 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
         if (cubeRef.current) observer.observe(cubeRef.current);
         return () => {
             observer.disconnect();
+            cancelAnimationFrame(stateRef.current.animId);
             if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
         };
     }, [animate]);
@@ -134,6 +219,12 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
             stateRef.current.isDragging = false;
             setIsDragging(false);
             setIsPinned(false);
+            setIsCharging(false);
+            isChargingRef.current = false;
+            if (holdTimerRef.current) {
+                clearTimeout(holdTimerRef.current);
+                holdTimerRef.current = null;
+            }
             return;
         }
 
@@ -148,6 +239,7 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
         setIsDragging(true);
         (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
 
+        isChargingRef.current = true;
         setIsCharging(true);
         if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
         holdTimerRef.current = setTimeout(() => {
@@ -155,6 +247,7 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
             setActiveIndex(currentActive);
             setIsPinned(true);
             setIsCharging(false);
+            isChargingRef.current = false;
         }, 2000);
     }, [isPinned]);
 
@@ -180,102 +273,41 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
         const speed = Math.sqrt(vx * vx + vy * vy);
         const shouldBeCharging = speed < 0.3;
 
-        setIsCharging((prev) => {
-            if (shouldBeCharging && !prev) {
+        if (shouldBeCharging) {
+            if (!isChargingRef.current) {
+                isChargingRef.current = true;
+                setIsCharging(true);
                 if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
                 holdTimerRef.current = setTimeout(() => {
                     const currentActive = getActiveFace(stateRef.current.rotX, stateRef.current.rotY);
                     setActiveIndex(currentActive);
                     setIsPinned(true);
                     setIsCharging(false);
+                    isChargingRef.current = false;
                 }, 2000);
-                return true;
-            } else if (!shouldBeCharging && prev) {
+            }
+        } else {
+            if (isChargingRef.current) {
+                isChargingRef.current = false;
+                setIsCharging(false);
                 if (holdTimerRef.current) {
                     clearTimeout(holdTimerRef.current);
                     holdTimerRef.current = null;
                 }
-                return false;
             }
-            return prev;
-        });
+        }
     }, []);
 
     const onPointerUp = useCallback(() => {
         stateRef.current.isDragging = false;
         setIsDragging(false);
         setIsCharging(false);
+        isChargingRef.current = false;
         if (holdTimerRef.current) {
             clearTimeout(holdTimerRef.current);
             holdTimerRef.current = null;
         }
     }, []);
-
-    const renderFaceContent = (idx: number) => {
-        const project = currentData[idx];
-        const Icon = project?.icon;
-
-        if (isDesignMode) {
-            // Rubik 3x3 grid mode
-            const face = RUBIK_FACES[idx] || RUBIK_FACES[0];
-            return (
-                <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 gap-[3px] p-[3px]">
-                    {RUBIK_CELLS.map((_, cellIdx) => (
-                        <div
-                            key={cellIdx}
-                            className="rounded-[2px] transition-all duration-500"
-                            style={{ background: face.bg }}
-                        />
-                    ))}
-                    {/* Overlay project info on center cell */}
-                    {project && Icon && (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                            <Icon
-                                size={32}
-                                strokeWidth={1.5}
-                                className={`mb-2 text-black drop-shadow-md transition-all ${isCharging ? 'animate-spin' : ''}`}
-                            />
-                            {isCharging && (
-                                <div className="w-12 h-1 overflow-hidden bg-black/20">
-                                    <div className="h-full bg-black animate-[loading_2s_linear_forwards]" />
-                                </div>
-                            )}
-                            <h3
-                                className={`font-heading font-bold text-[9px] text-center uppercase tracking-[0.15em] leading-tight inline bg-black text-white px-2 py-1 transition-opacity ${isCharging ? 'opacity-0' : ''}`}
-                            >
-                                {project.title}
-                            </h3>
-                        </div>
-                    )}
-                </div>
-            );
-        }
-
-        // Engineering mode - original wireframe style
-        return (
-            <>
-                {project && Icon && (
-                    <>
-                        <div className="relative flex flex-col items-center justify-center">
-                            <Icon
-                                size={40}
-                                strokeWidth={1.5}
-                                className={`text-white mb-4 transition-all ${isCharging ? 'animate-spin' : ''}`}
-                            />
-                            {isCharging && (
-                                <div className="absolute -bottom-2 w-16 h-1 bg-white/20 overflow-hidden">
-                                    <div className="h-full bg-white animate-[loading_2s_linear_forwards]" />
-                                </div>
-                            )}
-                        </div>
-                        <h3 className={`font-heading font-bold text-[10px] text-center uppercase text-white tracking-[0.2em] leading-tight px-2 transition-opacity ${isCharging ? 'opacity-0' : ''}`}>
-                            {project.title}
-                        </h3>
-                    </>
-                )}
-            </>
-        );
-    };
 
     return (
         <div
@@ -313,10 +345,17 @@ export default function ProjectCube({ onPinChange, isDesignMode = false }: CubeP
                             backfaceVisibility: 'visible',
                         }}
                     >
-                        {renderFaceContent(idx)}
+                        <FaceContent
+                            idx={idx}
+                            isCharging={isCharging}
+                            isDesignMode={isDesignMode}
+                            project={currentData[idx]}
+                        />
                     </div>
                 ))}
             </div>
         </div>
     );
 }
+
+export default memo(ProjectCube);
